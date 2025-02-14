@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 // Create an axios instance with base configuration
 const api = axios.create({
-  baseURL: 'http://localhost:5000/api', 
+  baseURL: 'https://ebra-travels-server.onrender.com', 
   headers: {
     'Content-Type': 'application/json'
   }
