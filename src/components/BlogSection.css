@@ -1,0 +1,260 @@
+
+/* src/components/BlogSection.css */
+
+.blog-section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 65px 65px;
+    text-align: center;
+    color: #4d4d4d;
+}
+
+.blog-section h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.blog-section p {
+    font-size: 1rem;
+    color: #042f5c;
+    margin-bottom: 30px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .blog-section {
+        padding: 40px 20px;
+    }
+
+    .blog-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .blog-section p {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-section {
+        padding: 30px 15px;
+    }
+
+    .blog-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .blog-section p {
+        font-size: 0.8rem;
+        margin-bottom: 15px;
+    }
+}
+.blog-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Ensure items wrap for smaller screens */
+}
+
+.large-blog-card {
+    flex: 2;
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.large-blog-card img {
+    width: 125%;
+    height: auto;
+    max-height: 480px;
+    object-fit: cover;
+}
+
+.large-blog-card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.blog-details p {
+    font-size: 1rem;
+    margin-top: 10px;
+    color: white;
+}
+
+/* Large Blog Card Adjustments */
+.large-blog-card .blog-details {
+    position: absolute;
+    bottom: 20px;
+    left: 35px;
+    background-color: rgba(0, 0, 0, 0.301);
+    color: white;
+    padding: 20px 30px 35px; /* Reduced top padding for less space above the content */
+    border-radius: 8px;
+    width: 110%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .blog-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .large-blog-card {
+        flex: 1;
+        width: 100%;
+    }
+
+    .large-blog-card img {
+        width: 100%; /* Adjust image width to fit the card */
+        min-height: 300px; /* Reduced minimum height for smaller screens */
+    }
+
+    .large-blog-card h3 {
+        font-size: 1.1rem; /* Reduce font size for better readability */
+    }
+
+    .blog-details p {
+        font-size: 0.9rem; /* Adjust paragraph font size */
+    }
+    .large-blog-card .blog-details{
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .large-blog-card {
+        flex: 1;
+        width: 100%;
+        margin-left: 80px;
+    }
+    .large-blog-card .blog-details{
+        width: 90%;
+    }
+    .large-blog-card img {
+        width: 100%;
+        height: 100px; /* Further reduce the image height on smaller screens */
+    }
+
+    .large-blog-card h3 {
+        font-size: 1rem; /* Adjust heading size for small screens */
+    }
+
+    .blog-details p {
+        font-size: 0.85rem; /* Further reduce paragraph font size for small devices */
+    }
+}
+
+
+
+/* Small Blog Card Adjustments */
+.small-blog-cards {
+    flex: 1.5; /* Increase the proportion of space for small cards */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.small-blog-card {
+    flex: none;
+    padding: 20px;
+    display: flex; /* Set display to flex to align image and content horizontally */
+    align-items: center; /* Vertically align content */
+    gap: 20px; /* Space between image and content */
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 150px;
+}
+
+.small-blog-card img {
+    width: 100px; /* Adjusted size of the image */
+    height: 120px; /* Make the image square */
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.small-blog-details {
+    flex: 1;
+    text-align: left; /* Align text to the left */
+}
+
+.small-blog-details h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: black;
+}
+
+.small-blog-details p {
+    margin: 5px 0;
+    font-size: 0.7rem;
+    color: #777;
+}
+
+.small-blog-details a {
+    color: #042f5c;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .small-blog-cards {
+        flex-direction: column; /* Stack small blog cards vertically on medium screens */
+    }
+
+    .small-blog-card {
+        max-height: none; /* Remove max-height for smaller screens */
+        padding: 15px; /* Adjust padding for better spacing */
+    }
+
+    .small-blog-card img {
+        width: 80px; /* Adjust image size for medium screens */
+        height: 90px; /* Adjust height for medium screens */
+    }
+
+    .small-blog-details h3 {
+        font-size: 0.9rem; /* Adjust heading font size */
+    }
+
+    .small-blog-details p {
+        font-size: 0.65rem; /* Adjust paragraph font size */
+    }
+
+    .small-blog-details a {
+        font-size: 0.75rem; /* Adjust link font size */
+    }
+}
+
+@media (max-width: 480px) {
+    .small-blog-cards {
+        flex-direction: column; /* Stack small blog cards vertically on mobile screens */
+        margin-left: -90px;
+        width: 90%;
+    }
+
+    .small-blog-card {
+        padding: 10px; /* Reduce padding for mobile screens */
+        
+    }
+
+    .small-blog-card img {
+        width: 60px; /* Further reduce image size on mobile */
+        height: 70px; /* Adjust height for mobile screens */
+    }
+
+    .small-blog-details h3 {
+        font-size: 0.8rem; /* Adjust heading font size */
+    }
+
+    .small-blog-details p {
+        font-size: 0.6rem; /* Adjust paragraph font size for mobile */
+    }
+
+    .small-blog-details a {
+        font-size: 0.7rem; /* Adjust link font size for mobile */
+    }
+}

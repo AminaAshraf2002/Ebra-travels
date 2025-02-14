@@ -1,0 +1,173 @@
+/* src/components/WhyChooseUs.css */
+.why-choose-us {
+    position: relative;
+    background-image: url('../assets/maldives.webp');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding: 50px 20px;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    margin-top: -30px;
+}
+
+.why-choose-us::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity for transparency */
+    z-index: 0;
+}
+
+.why-choose-us h2,
+.why-choose-us p,
+.reasons {
+    position: relative;
+    z-index: 1;
+}
+
+.why-choose-us h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.why-choose-us p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+}
+
+.reasons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.reason {
+    max-width: 300px;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Specific styling for the icons in this section */
+.why-icon {
+    font-size: 2.5rem;
+    color:  rgba(255, 230, 0, 0.938); /* Example color for icons */
+    margin-bottom: 15px;
+}
+
+.reason h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.reason p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+@media (max-width: 767px) {
+    .why-choose-us {
+        background-attachment: scroll; /* Parallax effect doesn't work well with mobile devices, so we disable it */
+    }
+  
+    .why-choose-us h2 {
+        font-size: 1.5rem;
+    }
+
+    .why-choose-us p {
+        font-size: 1rem;
+    }
+
+    .reasons {
+        justify-content: center;
+    }
+
+    .reason {
+        max-width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .why-icon {
+        font-size: 2rem;
+    }
+
+    .reason h3 {
+        font-size: 1rem;
+    }
+
+    .reason p {
+        font-size: 0.8rem;
+    }
+}
+@media (max-width: 1024px) {
+    .why-choose-us {
+        padding: 40px 15px;
+    }
+
+    .why-choose-us h2 {
+        font-size: 1.8rem;
+    }
+
+    .why-choose-us p {
+        font-size: 1rem;
+    }
+
+    .reasons {
+        justify-content: center;
+    }
+
+    .reason {
+        max-width: 45%;
+        margin-bottom: 20px;
+    }
+
+    .why-icon {
+        font-size: 2.3rem;
+    }
+
+    .reason h3 {
+        font-size: 1.1rem;
+    }
+
+    .reason p {
+        font-size: 0.9rem;
+    }
+}
+@media (min-width: 1025px) {
+    .why-choose-us {
+        background-attachment: fixed; /* Parallax effect is maintained here */
+        padding: 60px 20px;
+    }
+
+    .why-choose-us h2 {
+        font-size: 2rem;
+    }
+
+    .why-choose-us p {
+        font-size: 1.1rem;
+    }
+
+    .reasons {
+        justify-content: space-around;
+    }
+
+    .reason {
+        max-width: 300px;
+        margin-bottom: 30px;
+    }
+
+    .why-icon {
+        font-size: 2.5rem;
+    }
+
+    .reason h3 {
+        font-size: 1.2rem;
+    }
+
+    .reason p {
+        font-size: 0.9rem;
+    }
+}

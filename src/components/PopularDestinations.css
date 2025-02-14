@@ -1,0 +1,248 @@
+/* Container Styles */
+.popular-destinations {
+    text-align: center;
+    padding: 40px 20px;
+    margin: 0 auto;
+    max-width: 1200px; /* Center content with max width */
+    margin-top: -10px;
+}
+
+/* Header Styles */
+.popular-header-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Paragraph in the Header */
+.popular-header-row p {
+    font-size: 1rem;
+    color: #042f5c;
+    line-height: 1.4;
+    margin: 0;
+    max-width: 100%; /* Prevents overflow */
+}
+
+/* Heading in the Header */
+.popular-header-row h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    margin: 0;
+    max-width: 100%; /* Prevents overflow */
+}
+
+/* Responsive Adjustments for Mobile */
+@media (max-width: 600px) {
+    /* Mobile screen styles */
+    .popular-header-row {
+        align-items: center; /* Center align for smaller screens */
+        text-align: center;
+    }
+
+    .popular-header-row p,
+    .popular-header-row h2 {
+        margin-right: 0; /* Remove fixed margin on smaller screens */
+    }
+
+    .popular-header-row p {
+        font-size: 0.9rem; /* Slightly smaller text for mobile */
+    }
+
+    .popular-header-row h2 {
+        font-size: 1.5rem; /* Adjust heading size for mobile */
+    }
+}
+
+/* Responsive Adjustments for Tablets */
+@media (min-width: 601px) and (max-width: 1024px) {
+    /* Tablet screen styles */
+    .popular-header-row {
+        align-items: flex-start; /* Align content to the left for tablets */
+        text-align: left; /* Left align text */
+    }
+
+    .popular-header-row p {
+        font-size: 1rem; /* Normal size for paragraph on tablet */
+    }
+
+    .popular-header-row h2 {
+        font-size: 1.8rem; /* Slightly smaller heading for tablets */
+    }
+}
+
+/* Responsive Adjustments for Laptops */
+@media (min-width: 1025px) and (max-width: 1440px) {
+    /* Laptop screen styles */
+    .popular-header-row {
+        align-items: flex-start; /* Align content to the left for laptops */
+        text-align: left; /* Left align text */
+    }
+
+    .popular-header-row p {
+        font-size: 1rem; /* Normal paragraph size for laptops */
+    }
+
+    .popular-header-row h2 {
+        font-size: 2rem; /* Heading size for laptops */
+    }
+}
+
+/* Responsive Adjustments for Large Screens (Desktop) */
+@media (min-width: 1441px) {
+    /* Desktop screen styles */
+    .popular-header-row {
+        align-items: flex-start; /* Align content to the left for desktops */
+        text-align: left; /* Left align text */
+    }
+
+    .popular-header-row p {
+        font-size: 1rem; /* Paragraph size for desktop */
+    }
+
+    .popular-header-row h2 {
+        font-size: 2.2rem; /* Larger heading for desktop */
+    }
+}
+/* Navigation Buttons */
+.navigation-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    
+    margin-left: 980px;
+    
+}
+
+.navigation-buttons .prev-button,
+.navigation-buttons .next-button {
+    background-color: #8b5e34;
+    border: none;
+    font-size: 1rem;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.navigation-buttons .prev-button:hover,
+.navigation-buttons .next-button:hover {
+    background-color: #704729;
+}
+
+/* Card Styles */
+.destination-card {
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    height: 280px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    background: white;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.destination-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styles */
+.card-image-container {
+    position: relative;
+}
+
+.card-image-container img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    
+}
+
+.card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: red;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-right: -20px;
+}
+
+/* Content Styles */
+.destination-location-name {
+    font-size: 0.9rem;
+    color: #757575;
+    margin: 10px 0 0;
+    text-align: center;
+}
+
+.place-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #042f5c;
+    margin: 5px 0;
+    text-align: center;
+}
+
+.ratings {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 10px 0;
+    text-align: center;
+}
+
+.ratings span:first-child {
+    margin-right: 5px;
+    color: #f39c12; /* Gold for stars */
+}
+
+.ratings span:last-child {
+    color: #757575;
+}
+
+/* Responsive Breakpoints */
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+}
+
+/* 2 cards per row for small screens (phones) */
+@media (max-width: 640px) {
+    .swiper {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+}
+
+/* 3 cards per row for tablets */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .swiper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+}
+
+/* 4 cards per row for large screens */
+@media (min-width: 1025px) {
+    .swiper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+}

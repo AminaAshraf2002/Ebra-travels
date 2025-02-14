@@ -1,0 +1,308 @@
+/* AdminLogin.css */
+
+.admin-page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e4f1ff 100%);
+    padding: 1rem;
+  }
+  
+  .admin-box-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 450px;
+    animation: adminFadeIn 0.5s ease-out;
+  }
+  
+  .admin-header-section {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+  
+  .admin-logo-circle {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #1a56db 0%, #031f5c);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 4px 15px rgba(26, 86, 219, 0.2);
+  }
+  
+  .admin-lock-icon {
+    color: white;
+    font-size: 2.5rem;
+  }
+  
+  .admin-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #031f5c;
+    margin-bottom: 0.5rem;
+  }
+  
+  .admin-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+  }
+  
+  .admin-description {
+    color: #6b7280;
+    font-size: 1rem;
+  }
+  
+  .admin-form-container {
+    margin-top: 2rem;
+  }
+  
+  .admin-input-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .admin-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+  }
+  
+  .admin-input-field {
+    position: relative;
+  }
+  
+  .admin-field-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+    font-size: 1.25rem;
+  }
+  
+  .admin-input {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 2.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+  }
+  
+  .admin-input:focus {
+    outline: none;
+    border-color: #031f5c;
+    box-shadow: 0 0 0 4px rgba(26, 86, 219, 0.1);
+  }
+  
+  .admin-input:disabled {
+    background-color: #f9fafb;
+    cursor: not-allowed;
+  }
+  
+  .admin-eye-button {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    font-size: 1.25rem;
+    padding: 0.25rem;
+    transition: color 0.2s ease;
+  }
+  
+  .admin-eye-button:hover:not(:disabled) {
+    color: #6b7280;
+  }
+  
+  .admin-eye-button:disabled {
+    cursor: not-allowed;
+  }
+  
+  .admin-error-container {
+    background-color: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    animation: adminShake 0.5s ease-in-out;
+  }
+  
+  .admin-error-icon {
+    color: #ef4444;
+    margin-right: 0.75rem;
+    font-size: 1.25rem;
+  }
+  
+  .admin-error-text {
+    color: #b91c1c;
+    font-size: 0.875rem;
+  }
+  
+  .admin-submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1a56db 0%, #031f5c 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  .admin-submit-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(26, 86, 219, 0.2);
+  }
+  
+  .admin-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+  
+  .admin-submit-icon {
+    font-size: 1.25rem;
+  }
+  
+  .admin-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: adminSpin 1s linear infinite;
+  }
+  
+  .admin-footer-text {
+    text-align: center;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 1.5rem;
+  }
+  
+  /* Animations */
+  @keyframes adminFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes adminShake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+  
+  @keyframes adminSpin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 640px) {
+    .admin-box-container {
+      padding: 2rem;
+      margin: 1rem;
+    }
+  
+    .admin-title {
+      font-size: 1.875rem;
+    }
+  
+    .admin-subtitle {
+      font-size: 1.25rem;
+    }
+  
+    .admin-logo-circle {
+      width: 70px;
+      height: 70px;
+    }
+  
+    .admin-lock-icon {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .admin-box-container {
+      padding: 1.5rem;
+    }
+  
+    .admin-input {
+      padding: 0.75rem 1rem 0.75rem 2.5rem;
+      font-size: 0.875rem;
+    }
+  
+    .admin-submit-btn {
+      padding: 0.875rem;
+      font-size: 0.875rem;
+    }
+  }
+  
+  /* Optional: Dark Mode Support */
+  @media (prefers-color-scheme: dark) {
+    .admin-page-wrapper {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    }
+  
+    .admin-box-container {
+      background: #2d3748;
+    }
+  
+    .admin-title {
+      color: #60a5fa;
+    }
+  
+    .admin-subtitle,
+    .admin-label {
+      color: #e2e8f0;
+    }
+  
+    .admin-description,
+    .admin-footer-text {
+      color: #a0aec0;
+    }
+  
+    .admin-input {
+      background: #1a202c;
+      border-color: #4a5568;
+      color: #e2e8f0;
+    }
+  
+    .admin-input:focus {
+      border-color: #60a5fa;
+    }
+  
+    .admin-error-container {
+      background-color: #742a2a;
+      border-left-color: #f56565;
+    }
+  
+    .admin-error-text {
+      color: #feb2b2;
+    }
+  }

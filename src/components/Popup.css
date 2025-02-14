@@ -1,0 +1,224 @@
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Ensure it's high enough */
+  
+   
+}
+
+/* Popup Container */
+.popup-container {
+    width: 60%; /* Keep width unchanged or adjust as needed */
+    height: 100%; /* Set a smaller height */
+    max-height: 600px; /* Limit the maximum height */
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: auto; /* Add scroll for content if needed */
+    display: flex;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
+    position: relative;
+    padding: 10px; /* Reduce padding */
+}
+
+/* Close Button */
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    z-index: 10;
+}
+
+.popup-close:hover {
+    color: #007bff;
+}
+
+/* Popup Content - Left Section */
+.popup-left {
+    flex: 1;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.popup-left h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.popup-left ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 5px;
+}
+
+.popup-left ul li {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.popup-left ul li:before {
+    content: "•";
+    font-size: 1.2rem;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.popup-left form input[type="text"],
+.popup-left form input[type="email"] {
+    width: 80%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.7rem;
+}
+
+.popup-left form input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.popup-left form label {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.popup-left form button {
+    width: 80%;
+    padding: 6px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.popup-left form button:hover {
+    background-color: #0056b3;
+}
+
+/* Popup Content - Right Section */
+.popup-right {
+    flex: 0.5;
+    position: relative;
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.popup-right img {
+    width: 350px;
+    height: 100%;
+    object-fit: cover;
+    object-position: left;
+   
+   
+    
+}
+.error {
+    color: red;
+    font-size: 0.8rem;
+    margin-top: -8px;
+    margin-bottom: 10px;
+    display: block;
+}
+.success-message {
+    color:  #042f5c;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .popup-container {
+        flex-direction: column;
+    }
+
+    .popup-right {
+        display: none; /* Hide image on smaller screens */
+    }
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .popup-container {
+        flex-direction: column; /* Stack sections vertically */
+        width: 90%; /* Adjust width for smaller screens */
+        height: auto; /* Allow height to adjust */
+        max-height: 90%; /* Avoid overflow */
+        padding: 15px; /* Adjust padding */
+    }
+
+    .popup-right {
+        display: none; /* Hide the right section on smaller screens */
+    }
+
+    .popup-left {
+        padding: 10px; /* Adjust padding for better spacing */
+    }
+
+    .popup-left form input[type="text"],
+    .popup-left form input[type="email"],
+    .popup-left form button {
+        width: 100%; /* Make inputs and buttons responsive */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .popup-container {
+        width: 95%; /* Further adjust width for extra small screens */
+        padding: 10px; /* Reduce padding */
+    }
+
+    .popup-left h3 {
+        font-size: 1rem; /* Smaller heading font size */
+    }
+
+    .popup-left ul li {
+        font-size: 0.8rem; /* Adjust font size */
+    }
+
+    .popup-left form input[type="text"],
+    .popup-left form input[type="email"] {
+        font-size: 0.7rem; /* Reduce font size for inputs */
+        padding: 6px; /* Adjust padding for inputs */
+    }
+
+    .popup-left form button {
+        font-size: 0.9rem; /* Adjust button font size */
+        padding: 8px; /* Adjust button padding */
+    }
+}

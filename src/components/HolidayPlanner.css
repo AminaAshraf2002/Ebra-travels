@@ -1,0 +1,175 @@
+.holiday-planner {
+    text-align: center;
+    padding: 4rem; /* Adjusted for responsiveness */
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-image: url('https://img.freepik.com/free-photo/woman-tourist-full-length-happy-young-woman-standing-with-suitcase-with-exciting-gesturing-isolated_1258-111606.jpg');
+    background-size:cover;
+    background-position: center;
+}
+
+/* Title Section */
+.title-section {
+    margin-top: -50px;
+    text-align: left;
+    padding: 1rem;
+}
+
+.subheading {
+    color: #042f5c;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-left: 80px;
+}
+
+.main-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+    margin-left: 80px
+}
+
+/* Tour List Section */
+.tour-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+
+/* Image Container */
+.image-container {
+    width: 100px;
+    height: 120px;
+    background-color: #f9f9f9;
+    border-radius: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    margin: 0 auto 0.5rem auto;
+    position: relative;
+    overflow: hidden;
+}
+
+.tour-image {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 45%;
+}
+
+/* Icon Container */
+.icon-container {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgb(245, 248, 248);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    color: #042f5c;
+}
+
+/* Tour Title & Details */
+.tour-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+   
+}
+
+.tour-details {
+    font-size: 0.85rem;
+    color: #042f5c;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .holiday-planner {
+        padding: 2rem;
+    }
+
+    .title-section {
+        margin-top: -20px;
+        text-align: center;
+    }
+
+    .main-heading {
+        font-size: 1.25rem;
+    }
+
+    .subheading {
+        font-size: 0.9rem;
+    }
+
+    .tour-list {
+        gap: 1rem;
+    }
+
+    .tour-card {
+        max-width: 200px;
+    }
+
+    .image-container {
+        width: 80px;
+        height: 100px;
+    }
+
+    .icon-container {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .tour-title {
+        font-size: 0.9rem;
+    }
+
+    .tour-details {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .holiday-planner {
+        padding: 1.5rem;
+    }
+
+    .main-heading {
+        font-size: 1rem;
+    }
+
+    .tour-card {
+        max-width: 150px;
+    }
+
+    .image-container {
+        width: 70px;
+        height: 90px;
+    }
+
+    .icon-container {
+        width: 25px;
+        height: 25px;
+        font-size: 0.9rem;
+    }
+
+    .tour-title {
+        font-size: 0.8rem;
+    }
+
+    .tour-details {
+        font-size: 0.75rem;
+    }
+}

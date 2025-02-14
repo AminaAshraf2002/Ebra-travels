@@ -1,0 +1,210 @@
+/* General Reset */
+.about-us {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 300px; /* Full viewport height */
+  background-size: cover; /* Ensures the image covers the entire section */
+  background-position: center center; /* Centers the image */
+  background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 20px;
+}
+
+.hero-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* The image will cover the entire section */
+  object-position: center; /* Centers the image */
+}
+
+.hero-overlay h1 {
+  font-size: 3rem; /* Default for larger screens */
+  text-align: center;
+  margin: 0;
+}
+
+.hero-overlay p {
+  font-size: 1.25rem; /* Default for larger screens */
+  text-align: center;
+  margin: 0;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) { /* Tablets and smaller screens */
+  .hero-overlay h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-overlay p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) { /* Mobile devices */
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) { /* Very small devices */
+  .hero-overlay h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-overlay p {
+    font-size: 0.8rem;
+  }
+}
+/* Content Section */
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 40px auto;
+  padding: 0 10%;
+  flex-wrap: wrap;
+}
+
+.intro {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.intro h2 {
+  font-size: 2rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* General paragraph styles */
+.intro p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: #333; /* Dark text color */
+}
+
+.intro p span {
+  
+  color: black; /* Add color to span text */
+}
+
+/* List styling */
+.intro ul {
+  list-style-type: none; /* Remove default list bullet points */
+  padding-left: 0; /* Remove left padding */
+}
+
+.intro ul li {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem; /* Indent list items */
+  position: relative; /* For custom bullet points */
+}
+
+.intro ul li::before {
+  content: "•"; /* Custom bullet */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.5rem; /* Bullet size */
+  color: black; /* Bullet color */
+}
+
+.intro span {
+  display: inline-block;
+  background-color: #e0f7fa;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  margin-right: 10px;
+}
+
+.image {
+  flex: 1;
+}
+
+.image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 40px 10%;
+  background-color: #f9f9f9;
+  flex-wrap: wrap;
+  margin-top:-100px;
+  margin-bottom: 100px;
+}
+
+.feature-card {
+  text-align: center;
+  width: 300px;
+  margin: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.feature-card img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.feature-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: navy;;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .intro {
+    margin: 0 0 20px 0;
+  }
+
+  .features {
+    flex-direction: column;
+  }
+
+  .feature-card {
+    width: 100%;
+  }
+}

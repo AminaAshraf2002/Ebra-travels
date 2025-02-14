@@ -1,0 +1,355 @@
+.admin-enquiries {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Header Styles */
+  .enquiries-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .header-title h1 {
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  .header-icon {
+    font-size: 2rem;
+    color: #031f5c;
+  }
+  
+  .enquiry-stats {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .stat-item {
+    background: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Controls Styles */
+  .enquiries-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .search-box {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .search-box input:focus {
+    outline: none;
+    border-color: #1a56db;
+    box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.1);
+  }
+  
+  .filter-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: white;
+    color: #374151;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .filter-btn:hover {
+    background: #f3f4f6;
+  }
+  
+  .filter-btn.active {
+    background: #1a56db;
+    color: white;
+  }
+  
+  /* Enquiry Card Styles */
+  .enquiries-list {
+    display: grid;
+    gap: 1.5rem;
+  }
+  
+  .enquiry-card {
+    background: white;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .enquiry-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .enquiry-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  
+  .status-new {
+    background: #fef3c7;
+    color: #92400e;
+  }
+  
+  .status-contacted {
+    background: #e0e7ff;
+    color: #1e40af;
+  }
+  
+  .status-completed {
+    background: #d1fae5;
+    color: #065f46;
+  }
+  
+  .enquiry-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  
+  .enquiry-details {
+    flex: 1;
+  }
+  
+  .enquiry-details p {
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+  }
+  
+  .enquiry-details strong {
+    color: #374151;
+  }
+  
+  .enquiry-message {
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .enquiry-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .action-btn {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 0.375rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .email-btn {
+    background: #e0e7ff;
+    color: #1e40af;
+  }
+  
+  .email-btn:hover {
+    background: #c7d2fe;
+  }
+  
+  .complete-btn {
+    background: #d1fae5;
+    color: #065f46;
+  }
+  
+  .complete-btn:hover {
+    background: #a7f3d0;
+  }
+  
+  .delete-btn {
+    background: #fee2e2;
+    color: #dc2626;
+  }
+  
+  .delete-btn:hover {
+    background: #fecaca;
+  }
+  
+  .enquiry-footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .contact-btn {
+    padding: 0.5rem 1rem;
+    background:  #031f5c;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .contact-btn:hover {
+    background: #1e40af;
+  }
+  
+  .no-enquiries {
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 0.75rem;
+    color: #6b7280;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .admin-enquiries {
+      padding: 1rem;
+    }
+  
+    .enquiries-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .enquiry-stats {
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .enquiries-controls {
+      flex-direction: column;
+    }
+  
+    .filter-buttons {
+      width: 100%;
+      justify-content: space-between;
+    }
+  
+    .enquiry-content {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  
+    .enquiry-actions {
+      flex-direction: row;
+      justify-content: flex-end;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .filter-buttons {
+      flex-wrap: wrap;
+    }
+  
+    .filter-btn {
+      flex: 1;
+      text-align: center;
+    }
+  
+    .stat-item {
+      font-size: 0.75rem;
+    }
+  }
+  .enquiries-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+  }
+  
+  .enquiries-pagination button {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .enquiries-pagination button:hover:not(:disabled) {
+    background-color: #e0e0e0;
+  }
+  
+  .enquiries-pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  
+  .enquiries-pagination .page-numbers {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .enquiries-pagination .page-numbers button {
+    min-width: 40px;
+  }
+  
+  .enquiries-pagination .page-numbers button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .enquiries-pagination span {
+    margin: 0 5px;
+  }
