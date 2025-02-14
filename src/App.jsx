@@ -7,10 +7,10 @@ import Blog from './Pages/BlogPage';
 import About from './Pages/About';
 import Contact from './Pages/Contact';
 import Footer from './components/Footer';
-import AdminLogin from './admin/AdminLogin';
-import AdminDashboard from './admin/AdminDashboard';
-import AdminBlogs from './admin/AdminBlogs';
-import AdminEnquiries from './admin/AdminEnquiries';
+import AdminLogin from './Admin/AdminLogin';
+import AdminDashboard from './Admin/AdminDashboard';
+import AdminBlogs from './Admin/AdminBlogs';
+import AdminEnquiries from './Admin/AdminEnquiries';
 
 // Layout component to handle conditional rendering
 const Layout = ({ children }) => {
