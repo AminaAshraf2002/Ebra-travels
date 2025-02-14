@@ -5,7 +5,7 @@ export const blogService = {
     // Get all blogs (admin view)
     getAllBlogsAdmin: async (params = {}) => {
         try {
-            const response = await api.get('/blogs/admin/blogs', { // Updated path
+            const response = await api.get('/api/blogs/admin/blogs', {
                 params: {
                     page: 1,
                     limit: 10,
@@ -24,7 +24,7 @@ export const blogService = {
     // Get published blogs (public view)
     getAllBlogs: async (params = {}) => {
         try {
-            const response = await api.get('/blogs', {
+            const response = await api.get('/api/blogs', {
                 params: {
                     page: 1,
                     limit: 10,
@@ -36,6 +36,42 @@ export const blogService = {
             const errorMessage = error.response?.data?.message || 'Failed to fetch public blogs';
             toast.error(errorMessage);
             console.error('Fetch public blogs error:', error.response?.data || error.message);
+            throw error;
+        }
+    },
+
+    // Get single blog by ID (public view)
+    getBlogById: async (id) => {
+        if (!id) {
+            toast.error('Blog ID is required');
+            throw new Error('Blog ID is required');
+        }
+
+        try {
+            const response = await api.get(`/api/blogs/${id}`);
+            return response.data;
+        } catch (error) {
+            const errorMessage = error.response?.data?.message || 'Failed to fetch blog details';
+            toast.error(errorMessage);
+            console.error('Fetch blog by ID error:', error.response?.data || error.message);
+            throw error;
+        }
+    },
+
+    // Get single blog by ID (admin view)
+    getBlogByIdAdmin: async (id) => {
+        if (!id) {
+            toast.error('Blog ID is required');
+            throw new Error('Blog ID is required');
+        }
+
+        try {
+            const response = await api.get(`/api/blogs/admin/blogs/${id}`);
+            return response.data;
+        } catch (error) {
+            const errorMessage = error.response?.data?.message || 'Failed to fetch blog details';
+            toast.error(errorMessage);
+            console.error('Fetch blog by ID error:', error.response?.data || error.message);
             throw error;
         }
     },
@@ -78,7 +114,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.post('/blogs/admin/blogs', formData, { // Updated path
+            const response = await api.post('/api/blogs/admin/blogs', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -115,7 +151,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.put(`/blogs/admin/blogs/${id}`, formData, { // Updated path
+            const response = await api.put(`/api/blogs/admin/blogs/${id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -127,24 +163,6 @@ export const blogService = {
             const errorMessage = error.response?.data?.message || 'Failed to update blog';
             toast.error(errorMessage);
             console.error('Blog update error:', error.response?.data || error.message);
-            throw error;
-        }
-    },
-
-    // Get single blog by ID (admin view)
-    getBlogByIdAdmin: async (id) => {
-        if (!id) {
-            toast.error('Blog ID is required');
-            throw new Error('Blog ID is required');
-        }
-
-        try {
-            const response = await api.get(`/blogs/admin/blogs/${id}`); // Updated path
-            return response.data;
-        } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to fetch blog details';
-            toast.error(errorMessage);
-            console.error('Fetch blog by ID error:', error.response?.data || error.message);
             throw error;
         }
     },
@@ -167,13 +185,26 @@ export const blogService = {
         }
 
         try {
-            const response = await api.delete(`/blogs/admin/blogs/${id}`); // Updated path
+            const response = await api.delete(`/api/blogs/admin/blogs/${id}`);
             toast.success('Blog deleted successfully');
             return response.data;
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to delete blog';
             toast.error(errorMessage);
             console.error('Delete blog error:', error.response?.data || error.message);
+            throw error;
+        }
+    },
+
+    // Get blog statistics (if needed)
+    getBlogStats: async () => {
+        try {
+            const response = await api.get('/api/blogs/admin/stats');
+            return response.data;
+        } catch (error) {
+            const errorMessage = error.response?.data?.message || 'Failed to fetch blog stats';
+            toast.error(errorMessage);
+            console.error('Fetch blog stats error:', error.response?.data || error.message);
             throw error;
         }
     }
