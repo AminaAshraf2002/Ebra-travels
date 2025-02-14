@@ -5,7 +5,7 @@ export const blogService = {
     // Get all blogs (admin view)
     getAllBlogsAdmin: async (params = {}) => {
         try {
-            const response = await api.get('/blogs/admin/all', {
+            const response = await api.get('/blogs/admin/blogs', { // Updated path
                 params: {
                     page: 1,
                     limit: 10,
@@ -42,19 +42,17 @@ export const blogService = {
 
     // Create a new blog
     createBlog: async (blogData) => {
-        // Validate input
         if (!blogData) {
             toast.error('Blog data is required');
             throw new Error('Blog data is required');
         }
 
         try {
-            // Ensure blogData is a FormData object
             const formData = blogData instanceof FormData 
                 ? blogData 
                 : new FormData();
 
-            // Predefined required fields with default values
+            // Add default fields if not present
             const requiredFields = [
                 { key: 'title', defaultValue: 'Untitled Blog' },
                 { key: 'category', defaultValue: 'Uncategorized' },
@@ -63,7 +61,6 @@ export const blogService = {
                 { key: 'status', defaultValue: 'Draft' }
             ];
 
-            // Add fields to FormData if not already present
             requiredFields.forEach(field => {
                 if (!formData.get(field.key)) {
                     const value = typeof field.defaultValue === 'function' 
@@ -73,7 +70,6 @@ export const blogService = {
                 }
             });
 
-            // If not a FormData, manually add fields from object
             if (!(blogData instanceof FormData)) {
                 Object.keys(blogData).forEach(key => {
                     if (blogData[key] !== null && blogData[key] !== undefined) {
@@ -82,7 +78,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.post('/blogs', formData, {
+            const response = await api.post('/blogs/admin/blogs', formData, { // Updated path
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -100,42 +96,17 @@ export const blogService = {
 
     // Update an existing blog
     updateBlog: async (id, blogData) => {
-        // Validate input
-        if (!id) {
-            toast.error('Blog ID is required');
-            throw new Error('Blog ID is required');
-        }
-        if (!blogData) {
-            toast.error('Blog data is required');
-            throw new Error('Blog data is required');
+        if (!id || !blogData) {
+            toast.error('Blog ID and data are required');
+            throw new Error('Blog ID and data are required');
         }
 
         try {
-            // Ensure blogData is a FormData object
             const formData = blogData instanceof FormData 
                 ? blogData 
                 : new FormData();
 
-            // Predefined required fields with default values
-            const requiredFields = [
-                { key: 'title', defaultValue: 'Untitled Blog' },
-                { key: 'category', defaultValue: 'Uncategorized' },
-                { key: 'description', defaultValue: 'No description provided' },
-                { key: 'date', defaultValue: () => new Date().toISOString() },
-                { key: 'status', defaultValue: 'Draft' }
-            ];
-
-            // Add fields to FormData if not already present
-            requiredFields.forEach(field => {
-                if (!formData.get(field.key)) {
-                    const value = typeof field.defaultValue === 'function' 
-                        ? field.defaultValue() 
-                        : field.defaultValue;
-                    formData.append(field.key, value);
-                }
-            });
-
-            // If not a FormData, manually add fields from object
+            // Handle non-FormData input
             if (!(blogData instanceof FormData)) {
                 Object.keys(blogData).forEach(key => {
                     if (blogData[key] !== null && blogData[key] !== undefined) {
@@ -144,7 +115,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.put(`/blogs/${id}`, formData, {
+            const response = await api.put(`/blogs/admin/blogs/${id}`, formData, { // Updated path
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -162,14 +133,13 @@ export const blogService = {
 
     // Get single blog by ID (admin view)
     getBlogByIdAdmin: async (id) => {
-        // Validate input
         if (!id) {
             toast.error('Blog ID is required');
             throw new Error('Blog ID is required');
         }
 
         try {
-            const response = await api.get(`/blogs/admin/${id}`);
+            const response = await api.get(`/blogs/admin/blogs/${id}`); // Updated path
             return response.data;
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to fetch blog details';
@@ -179,88 +149,31 @@ export const blogService = {
         }
     },
 
-    // Get single published blog (public view)
-    getBlogById: async (id) => {
-        // Validate input
+    // Delete a blog
+    deleteBlog: async (blogData) => {
+        const extractId = (data) => {
+            if (!data) return null;
+            if (typeof data === 'string') return data;
+            if (typeof data === 'object') {
+                return data._id || data.id || data.blogId || null;
+            }
+            return null;
+        };
+
+        const id = extractId(blogData);
         if (!id) {
             toast.error('Blog ID is required');
             throw new Error('Blog ID is required');
         }
 
         try {
-            const response = await api.get(`/blogs/${id}`);
-            return response.data;
-        } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to fetch blog details';
-            toast.error(errorMessage);
-            console.error('Fetch public blog by ID error:', error.response?.data || error.message);
-            throw error;
-        }
-    },
-
-    // Delete a blog
-    deleteBlog: async (blogData) => {
-        // Extensive logging for debugging
-        console.log('Delete Blog Input:', blogData);
-
-        // Comprehensive ID extraction
-        const extractId = (data) => {
-            if (!data) return null;
-
-            // Direct string ID
-            if (typeof data === 'string') return data;
-
-            // Object with multiple possible ID fields
-            if (typeof data === 'object') {
-                const possibleIds = [
-                    data._id, 
-                    data.id, 
-                    data.blogId, 
-                    data?._doc?._id,
-                    data?.toObject?.()._id
-                ];
-
-                // Find first valid ID
-                const validId = possibleIds.find(
-                    id => id && String(id).trim() !== ''
-                );
-
-                return validId ? String(validId).trim() : null;
-            }
-
-            return null;
-        };
-
-        // Extract and validate ID
-        const id = extractId(blogData);
-
-        if (!id) {
-            toast.error('Failed to extract blog ID');
-            console.error('Failed to extract blog ID. Input data:', blogData);
-            throw new Error('Blog ID is required');
-        }
-
-        try {
-            const response = await api.delete(`/blogs/${id}`);
+            const response = await api.delete(`/blogs/admin/blogs/${id}`); // Updated path
             toast.success('Blog deleted successfully');
             return response.data;
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to delete blog';
             toast.error(errorMessage);
             console.error('Delete blog error:', error.response?.data || error.message);
-            throw error;
-        }
-    },
-
-    // Get blog statistics
-    getBlogStats: async () => {
-        try {
-            const response = await api.get('/blogs/stats');
-            return response.data;
-        } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to fetch blog stats';
-            toast.error(errorMessage);
-            console.error('Fetch blog stats error:', error.response?.data || error.message);
             throw error;
         }
     }
