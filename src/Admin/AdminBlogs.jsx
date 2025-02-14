@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { blogService } from '../services/blogService';
 import './AdminBlogs.css';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://ebra-travels.onrender.com';
 
 const AdminBlogs = () => {
     // Categories for dropdown
