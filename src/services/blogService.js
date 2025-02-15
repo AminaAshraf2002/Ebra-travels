@@ -5,7 +5,7 @@ export const blogService = {
     // Get all blogs (admin view)
     getAllBlogsAdmin: async (params = {}) => {
         try {
-            const response = await api.get('/api/blogs/admin/blogs', {
+            const response = await api.get('/blogs/admin/blogs', { // Matches router.get('/admin/blogs')
                 params: {
                     page: 1,
                     limit: 10,
@@ -24,7 +24,7 @@ export const blogService = {
     // Get published blogs (public view)
     getAllBlogs: async (params = {}) => {
         try {
-            const response = await api.get('/api/blogs', {
+            const response = await api.get('/blogs', { // Matches router.get('/')
                 params: {
                     page: 1,
                     limit: 10,
@@ -35,7 +35,6 @@ export const blogService = {
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to fetch public blogs';
             toast.error(errorMessage);
-            console.error('Fetch public blogs error:', error.response?.data || error.message);
             throw error;
         }
     },
@@ -48,12 +47,11 @@ export const blogService = {
         }
 
         try {
-            const response = await api.get(`/api/blogs/${id}`);
+            const response = await api.get(`/blogs/${id}`); // Matches router.get('/:id')
             return response.data;
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to fetch blog details';
             toast.error(errorMessage);
-            console.error('Fetch blog by ID error:', error.response?.data || error.message);
             throw error;
         }
     },
@@ -66,45 +64,21 @@ export const blogService = {
         }
 
         try {
-            const response = await api.get(`/api/blogs/admin/blogs/${id}`);
+            const response = await api.get(`/blogs/admin/blogs/${id}`); // Matches router.get('/admin/blogs/:id')
             return response.data;
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to fetch blog details';
             toast.error(errorMessage);
-            console.error('Fetch blog by ID error:', error.response?.data || error.message);
             throw error;
         }
     },
 
-    // Create a new blog
+    // Create blog
     createBlog: async (blogData) => {
-        if (!blogData) {
-            toast.error('Blog data is required');
-            throw new Error('Blog data is required');
-        }
-
         try {
             const formData = blogData instanceof FormData 
                 ? blogData 
                 : new FormData();
-
-            // Add default fields if not present
-            const requiredFields = [
-                { key: 'title', defaultValue: 'Untitled Blog' },
-                { key: 'category', defaultValue: 'Uncategorized' },
-                { key: 'description', defaultValue: 'No description provided' },
-                { key: 'date', defaultValue: () => new Date().toISOString() },
-                { key: 'status', defaultValue: 'Draft' }
-            ];
-
-            requiredFields.forEach(field => {
-                if (!formData.get(field.key)) {
-                    const value = typeof field.defaultValue === 'function' 
-                        ? field.defaultValue() 
-                        : field.defaultValue;
-                    formData.append(field.key, value);
-                }
-            });
 
             if (!(blogData instanceof FormData)) {
                 Object.keys(blogData).forEach(key => {
@@ -114,7 +88,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.post('/api/blogs/admin/blogs', formData, {
+            const response = await api.post('/blogs/admin/blogs', formData, { // Matches router.post('/admin/blogs')
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -125,16 +99,15 @@ export const blogService = {
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to create blog';
             toast.error(errorMessage);
-            console.error('Blog creation error:', error.response?.data || error.message);
             throw error;
         }
     },
 
-    // Update an existing blog
+    // Update blog
     updateBlog: async (id, blogData) => {
-        if (!id || !blogData) {
-            toast.error('Blog ID and data are required');
-            throw new Error('Blog ID and data are required');
+        if (!id) {
+            toast.error('Blog ID is required');
+            throw new Error('Blog ID is required');
         }
 
         try {
@@ -142,7 +115,6 @@ export const blogService = {
                 ? blogData 
                 : new FormData();
 
-            // Handle non-FormData input
             if (!(blogData instanceof FormData)) {
                 Object.keys(blogData).forEach(key => {
                     if (blogData[key] !== null && blogData[key] !== undefined) {
@@ -151,7 +123,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.put(`/api/blogs/admin/blogs/${id}`, formData, {
+            const response = await api.put(`/blogs/admin/blogs/${id}`, formData, { // Matches router.put('/admin/blogs/:id')
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -162,50 +134,27 @@ export const blogService = {
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to update blog';
             toast.error(errorMessage);
-            console.error('Blog update error:', error.response?.data || error.message);
             throw error;
         }
     },
 
-    // Delete a blog
-    deleteBlog: async (blogData) => {
-        const extractId = (data) => {
-            if (!data) return null;
-            if (typeof data === 'string') return data;
-            if (typeof data === 'object') {
-                return data._id || data.id || data.blogId || null;
-            }
-            return null;
-        };
-
-        const id = extractId(blogData);
+    // Delete blog
+    deleteBlog: async (id) => {
         if (!id) {
             toast.error('Blog ID is required');
             throw new Error('Blog ID is required');
         }
 
         try {
-            const response = await api.delete(`/api/blogs/admin/blogs/${id}`);
+            const response = await api.delete(`/blogs/admin/blogs/${id}`); // Matches router.delete('/admin/blogs/:id')
             toast.success('Blog deleted successfully');
             return response.data;
         } catch (error) {
             const errorMessage = error.response?.data?.message || 'Failed to delete blog';
             toast.error(errorMessage);
-            console.error('Delete blog error:', error.response?.data || error.message);
-            throw error;
-        }
-    },
-
-    // Get blog statistics (if needed)
-    getBlogStats: async () => {
-        try {
-            const response = await api.get('/api/blogs/admin/stats');
-            return response.data;
-        } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to fetch blog stats';
-            toast.error(errorMessage);
-            console.error('Fetch blog stats error:', error.response?.data || error.message);
             throw error;
         }
     }
 };
+
+export default blogService;
