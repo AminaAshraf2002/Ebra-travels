@@ -5,7 +5,7 @@ export const blogService = {
     // Get all blogs (admin view)
     getAllBlogsAdmin: async (params = {}) => {
         try {
-            const response = await api.get('/admin/blogs', { // Changed from '/blogs/admin/blogs'
+            const response = await api.get('/blogs/admin', { // Changed from '/blogs/admin/blogs'
                 params: {
                     page: 1,
                     limit: 10,
