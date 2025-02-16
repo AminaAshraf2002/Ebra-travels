@@ -5,27 +5,17 @@ export const blogService = {
     // Get all blogs (public view)
     getAllBlogs: async (params = {}) => {
         try {
-            console.log('Fetching Public Blogs with params:', params);
-            
-            const response = await api.get('/blogs', { 
+            const response = await api.get('/', { 
                 params: {
                     page: 1,
                     limit: 10,
                     ...params
                 }
             });
-            
-            console.log('Public Blogs Fetch Response:', response.data);
             return response.data;
         } catch (error) {
-            console.error('Detailed Public Blogs Fetch Error:', {
-                status: error.response?.status,
-                data: error.response?.data,
-                message: error.message
-            });
-            
-            const errorMessage = error.response?.data?.message || 'Failed to fetch public blogs';
-            toast.error(errorMessage);
+            console.error('Public Blogs Fetch Error:', error);
+            toast.error('Failed to fetch blogs');
             throw error;
         }
     },
@@ -33,27 +23,17 @@ export const blogService = {
     // Get all blogs (admin view)
     getAllBlogsAdmin: async (params = {}) => {
         try {
-            console.log('Fetching Admin Blogs with params:', params);
-            
-            const response = await api.get('/blogs/admin', { 
+            const response = await api.get('/blog/admin', { 
                 params: {
                     page: 1,
                     limit: 10,
                     ...params
                 }
             });
-            
-            console.log('Admin Blogs Fetch Response:', response.data);
             return response.data;
         } catch (error) {
-            console.error('Detailed Admin Blogs Fetch Error:', {
-                status: error.response?.status,
-                data: error.response?.data,
-                message: error.message
-            });
-            
-            const errorMessage = error.response?.data?.message || 'Failed to fetch admin blogs';
-            toast.error(errorMessage);
+            console.error('Admin Blogs Fetch Error:', error);
+            toast.error('Failed to fetch admin blogs');
             throw error;
         }
     },
@@ -66,11 +46,11 @@ export const blogService = {
         }
 
         try {
-            const response = await api.get(`/blogs/${id}`);
+            const response = await api.get(`/${id}`);
             return response.data;
         } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to fetch blog details';
-            toast.error(errorMessage);
+            console.error('Blog Details Fetch Error:', error);
+            toast.error('Failed to fetch blog details');
             throw error;
         }
     },
@@ -83,16 +63,16 @@ export const blogService = {
         }
 
         try {
-            const response = await api.get(`/blogs/admin/${id}`);
+            const response = await api.get(`/blog/admin/${id}`);
             return response.data;
         } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to fetch admin blog details';
-            toast.error(errorMessage);
+            console.error('Admin Blog Details Fetch Error:', error);
+            toast.error('Failed to fetch admin blog details');
             throw error;
         }
     },
 
-    // Create blog
+    // Create blog (admin)
     createBlog: async (blogData) => {
         try {
             const formData = blogData instanceof FormData 
@@ -107,7 +87,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.post('/blogs/admin', formData, {
+            const response = await api.post('/blog/admin', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -116,13 +96,13 @@ export const blogService = {
             toast.success('Blog created successfully');
             return response.data;
         } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to create blog';
-            toast.error(errorMessage);
+            console.error('Blog Creation Error:', error);
+            toast.error('Failed to create blog');
             throw error;
         }
     },
 
-    // Update blog
+    // Update blog (admin)
     updateBlog: async (id, blogData) => {
         if (!id) {
             toast.error('Blog ID is required');
@@ -142,7 +122,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.put(`/blogs/admin/${id}`, formData, {
+            const response = await api.put(`/blog/admin/${id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -151,13 +131,13 @@ export const blogService = {
             toast.success('Blog updated successfully');
             return response.data;
         } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to update blog';
-            toast.error(errorMessage);
+            console.error('Blog Update Error:', error);
+            toast.error('Failed to update blog');
             throw error;
         }
     },
 
-    // Delete blog
+    // Delete blog (admin)
     deleteBlog: async (id) => {
         if (!id) {
             toast.error('Blog ID is required');
@@ -165,12 +145,12 @@ export const blogService = {
         }
 
         try {
-            const response = await api.delete(`/blogs/admin/${id}`);
+            const response = await api.delete(`/blog/admin/${id}`);
             toast.success('Blog deleted successfully');
             return response.data;
         } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to delete blog';
-            toast.error(errorMessage);
+            console.error('Blog Delete Error:', error);
+            toast.error('Failed to delete blog');
             throw error;
         }
     }
