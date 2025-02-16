@@ -15,9 +15,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { blogService } from '../services/blogService';
 import './AdminBlogs.css';
 
+const API_BASE_URL = 'https://ebra-travels-server.onrender.com/api';
 
 const AdminBlogs = () => {
-    // Categories for dropdown
     const categories = [
         'Travel Guide',
         'Travel Tips', 
@@ -52,7 +52,6 @@ const AdminBlogs = () => {
         image: null
     });
 
-    // Fetch Blogs
     const fetchBlogs = async (page = 1, search = '') => {
         setLoading(true);
         try {
@@ -62,11 +61,11 @@ const AdminBlogs = () => {
                 search
             });
 
-            setBlogs(response.blogs);
+            setBlogs(response.blogs || []);
             setPagination({
-                currentPage: response.currentPage,
-                totalPages: response.totalPages,
-                totalBlogs: response.total
+                currentPage: response.currentPage || 1,
+                totalPages: response.totalPages || 1,
+                totalBlogs: response.total || 0
             });
         } catch (error) {
             toast.error('Failed to fetch blogs');
@@ -76,21 +75,19 @@ const AdminBlogs = () => {
         }
     };
 
-    // Initial Data Fetch
     useEffect(() => {
         fetchBlogs();
     }, []);
 
-    // Delete Blog Handler
     const handleDelete = async (blog) => {
-        if (!blog) {
+        if (!blog._id) {
             toast.error('Invalid blog selected');
             return;
         }
 
         if (window.confirm('Are you sure you want to delete this blog?')) {
             try {
-                await blogService.deleteBlog(blog);
+                await blogService.deleteBlog(blog._id);
                 toast.success('Blog deleted successfully');
                 fetchBlogs(pagination.currentPage);
             } catch (error) {
@@ -100,7 +97,6 @@ const AdminBlogs = () => {
         }
     };
 
-    // Edit Blog Handler
     const handleEdit = (blog) => {
         setEditingBlog(blog);
         setFormData({
@@ -111,17 +107,10 @@ const AdminBlogs = () => {
             status: blog.status,
             image: blog.image
         });
-        setImagePreview(
-            blog.image
-                ? (blog.image.startsWith('http')
-                    ? blog.image
-                    : `${API_BASE_URL}/uploads/blogs/${blog.image}`)
-                : null
-        );
+        setImagePreview(blog.image ? formatImageUrl(blog.image) : null);
         setShowForm(true);
     };
 
-    // Add New Blog Handler
     const handleAddNew = () => {
         setEditingBlog(null);
         setFormData({
@@ -136,18 +125,15 @@ const AdminBlogs = () => {
         setShowForm(true);
     };
 
-    // Close Form Handler
     const handleCloseForm = () => {
         setShowForm(false);
         setEditingBlog(null);
         setImagePreview(null);
     };
 
-    // Image Change Handler
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         if (file) {
-            // Validate file size and type
             const maxSize = 5 * 1024 * 1024; // 5MB
             const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
 
@@ -170,12 +156,10 @@ const AdminBlogs = () => {
         }
     };
 
-    // Form Submit Handler
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
 
-        // Validate form data
         if (!formData.title.trim()) {
             toast.error('Title is required');
             setLoading(false);
@@ -191,15 +175,13 @@ const AdminBlogs = () => {
         try {
             const submitData = new FormData();
             
-            // Ensure all fields are added with default values
-            submitData.append('title', formData.title.trim() || 'Untitled Blog');
-            submitData.append('category', formData.category || 'Uncategorized');
-            submitData.append('description', formData.description.trim() || 'No description');
-            submitData.append('date', formData.date || new Date().toISOString());
-            submitData.append('status', formData.status || 'Draft');
+            submitData.append('title', formData.title.trim());
+            submitData.append('category', formData.category);
+            submitData.append('description', formData.description.trim());
+            submitData.append('date', formData.date);
+            submitData.append('status', formData.status);
             
-            // Add image if exists
-            if (formData.image) {
+            if (formData.image instanceof File) {
                 submitData.append('image', formData.image);
             }
 
@@ -214,20 +196,18 @@ const AdminBlogs = () => {
             fetchBlogs(pagination.currentPage);
             handleCloseForm();
         } catch (error) {
-            console.error('Blog submission error:', error.response?.data || error);
+            console.error('Blog submission error:', error);
             toast.error(error.response?.data?.message || 'Failed to save blog');
         } finally {
             setLoading(false);
         }
     };
 
-    // Filtered Blogs
-    const filteredBlogs = blogs.filter(blog =>
-        blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        blog.category.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const handleSearch = (value) => {
+        setSearchTerm(value);
+        fetchBlogs(1, value);
+    };
 
-    // Image URL Formatter
     const formatImageUrl = (image) => {
         if (!image) return '/placeholder.jpg';
         
@@ -238,7 +218,6 @@ const AdminBlogs = () => {
         return `${API_BASE_URL}/uploads/blogs/${image.replace(/^\/uploads\/blogs\//, '')}`;
     };
 
-    // Pagination Handler
     const handlePageChange = (newPage) => {
         if (newPage >= 1 && newPage <= pagination.totalPages) {
             fetchBlogs(newPage, searchTerm);
@@ -249,7 +228,6 @@ const AdminBlogs = () => {
         <div className="admin-blogs">
             <ToastContainer />
 
-            {/* Header Section */}
             <div className="blogs-header">
                 <div className="blogs-title">
                     <FaBlog className="blogs-icon" />
@@ -264,7 +242,6 @@ const AdminBlogs = () => {
                 </button>
             </div>
 
-            {/* Search and Stats Section */}
             <div className="blogs-controls">
                 <div className="search-box">
                     <FaSearch className="search-icon" />
@@ -272,10 +249,7 @@ const AdminBlogs = () => {
                         type="text"
                         placeholder="Search blogs..."
                         value={searchTerm}
-                        onChange={(e) => {
-                            setSearchTerm(e.target.value);
-                            fetchBlogs(1, e.target.value);
-                        }}
+                        onChange={(e) => handleSearch(e.target.value)}
                         disabled={loading}
                     />
                 </div>
@@ -299,19 +273,18 @@ const AdminBlogs = () => {
                 </div>
             </div>
 
-            {/* Blog List */}
             <div className="blogs-list">
                 {loading ? (
                     <div className="loading-spinner">
                         <FaSpinner className="spinner" />
                         <p>Loading blogs...</p>
                     </div>
-                ) : filteredBlogs.length === 0 ? (
+                ) : blogs.length === 0 ? (
                     <div className="no-blogs">
                         <p>No blogs found</p>
                     </div>
                 ) : (
-                    filteredBlogs.map(blog => (
+                    blogs.map(blog => (
                         <div key={blog._id} className="blog-card">
                             <div className="admin-blog-image">
                                 <img 
@@ -352,7 +325,6 @@ const AdminBlogs = () => {
                 )}
             </div>
 
-            {/* Blog Form Modal */}
             {showForm && (
                 <div className="blog-form-overlay">
                     <div className="blog-form-container">
@@ -364,7 +336,6 @@ const AdminBlogs = () => {
                         </div>
 
                         <form onSubmit={handleSubmit} className="blog-form">
-                            {/* Image Upload */}
                             <div className="form-group">
                                 <label>Blog Image</label>
                                 <div
@@ -389,7 +360,6 @@ const AdminBlogs = () => {
                                 </div>
                             </div>
 
-                            {/* Title */}
                             <div className="form-group">
                                 <label>Title</label>
                                 <input
@@ -401,7 +371,6 @@ const AdminBlogs = () => {
                                 />
                             </div>
 
-                            {/* Category */}
                             <div className="form-group">
                                 <label>Category</label>
                                 <select
@@ -418,7 +387,6 @@ const AdminBlogs = () => {
                                 </select>
                             </div>
 
-                            {/* Date */}
                             <div className="form-group">
                                 <label>Date</label>
                                 <input
@@ -429,7 +397,6 @@ const AdminBlogs = () => {
                                 />
                             </div>
 
-                            {/* Description */}
                             <div className="form-group">
                                 <label>Description</label>
                                 <textarea
@@ -441,7 +408,6 @@ const AdminBlogs = () => {
                                 ></textarea>
                             </div>
 
-                            {/* Status */}
                             <div className="form-group">
                                 <label>Status</label>
                                 <select
@@ -453,14 +419,13 @@ const AdminBlogs = () => {
                                 </select>
                             </div>
 
-                            {/* Form Actions */}
                             <div className="form-actions">
                                 <button type="button" className="cancel-btn" onClick={handleCloseForm}>
                                     Cancel
                                 </button>
-                                <button type="submit" className="save-btn">
+                                <button type="submit" className="save-btn" disabled={loading}>
                                     <FaSave />
-                                    {editingBlog ? 'Update Blog' : 'Save Blog'}
+                                    {loading ? 'Saving...' : (editingBlog ? 'Update Blog' : 'Save Blog')}
                                 </button>
                             </div>
                         </form>
@@ -468,13 +433,24 @@ const AdminBlogs = () => {
                 </div>
             )}
 
-            {/* Pagination */}
-            
-
             <div className="blogs-pagination">
-                <button className="page-btn" disabled>Previous</button>
-                <span className="page-number">Page 1 of 1</span>
-                <button className="page-btn" disabled>Next</button>
+                <button 
+                    className="page-btn" 
+                    onClick={() => handlePageChange(pagination.currentPage - 1)}
+                    disabled={pagination.currentPage === 1 || loading}
+                >
+                    Previous
+                </button>
+                <span className="page-number">
+                    Page {pagination.currentPage} of {pagination.totalPages}
+                </span>
+                <button 
+                    className="page-btn" 
+                    onClick={() => handlePageChange(pagination.currentPage + 1)}
+                    disabled={pagination.currentPage === pagination.totalPages || loading}
+                >
+                    Next
+                </button>
             </div>
         </div>
     );
