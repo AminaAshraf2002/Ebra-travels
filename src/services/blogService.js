@@ -5,35 +5,26 @@ export const blogService = {
     // Get all blogs (admin view)
     getAllBlogsAdmin: async (params = {}) => {
         try {
-            const response = await api.get('/blogs/admin', { // Changed from '/blogs/admin/blogs'
+            console.log('Fetching Admin Blogs with params:', params);
+            
+            const response = await api.get('/blogs/admin', { 
                 params: {
                     page: 1,
                     limit: 10,
                     ...params
                 }
             });
+            
+            console.log('Admin Blogs Fetch Response:', response.data);
             return response.data;
         } catch (error) {
+            console.error('Detailed Blogs Fetch Error:', {
+                status: error.response?.status,
+                data: error.response?.data,
+                message: error.message
+            });
+            
             const errorMessage = error.response?.data?.message || 'Failed to fetch blogs';
-            toast.error(errorMessage);
-            console.error('Fetch blogs error:', error.response?.data || error.message);
-            throw error;
-        }
-    },
-
-    // Get published blogs (public view)
-    getAllBlogs: async (params = {}) => {
-        try {
-            const response = await api.get('/blogs', {  // This is correct
-                params: {
-                    page: 1,
-                    limit: 10,
-                    ...params
-                }
-            });
-            return response.data;
-        } catch (error) {
-            const errorMessage = error.response?.data?.message || 'Failed to fetch public blogs';
             toast.error(errorMessage);
             throw error;
         }
