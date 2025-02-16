@@ -48,7 +48,7 @@ const AdminDashboard = () => {
           <a href="/admin/dashboard" className="nav-link active">
             <FaTachometerAlt /> Dashboard
           </a>
-          <a href="/admin/blogs" className="nav-link">
+          <a href="/admin/blog" className="nav-link">
             <FaBlog /> Blogs
           </a>
           <a href="/admin/enquiries" className="nav-link">
