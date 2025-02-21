@@ -44,7 +44,7 @@ const BlogPage = () => {
     if (image.startsWith('http://') || image.startsWith('https://')) {
       return image;
     }
-    return `${API_BASE_URL}/uploads/blogs/${image.replace(/^\/uploads\/blogs\//, '')}`;
+    return `https://ebra-travels-server.onrender.com/uploads/blogs/${image.replace(/^\/uploads\/blogs\//, '')}`;
   };
 
   return (
