@@ -5,7 +5,7 @@ export const blogService = {
     // Get all blogs (public view)
     getAllBlogs: async (params = {}) => {
         try {
-            const response = await api.get('/', { 
+            const response = await api.get('/blogs', { 
                 params: {
                     page: 1,
                     limit: 10,
