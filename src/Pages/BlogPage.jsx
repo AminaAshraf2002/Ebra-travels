@@ -6,6 +6,7 @@ import { blogService } from '../services/blogService';
 import { FaSpinner } from 'react-icons/fa';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+alert(API_BASE_URL)
 
 const BlogPage = () => {
   const [blogs, setBlogs] = useState([]);
