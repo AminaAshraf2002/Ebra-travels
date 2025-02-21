@@ -4,7 +4,7 @@ export const enquiryService = {
   // Create a new enquiry
   createEnquiry: async (enquiryData) => {
     try {
-      const response = await api.post('/enquiries', {
+      const response = await api.post('/', {
         name: enquiryData.name,
         email: enquiryData.email,
         phone: enquiryData.phone,
