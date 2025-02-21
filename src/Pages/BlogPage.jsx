@@ -40,10 +40,7 @@ const BlogPage = () => {
 
   // Format image URL
   const formatImageUrl = (image) => {
-    if (!image) {
-      return '/placeholder.jpg';
-    }
-    
+    if (!image) return '/placeholder.jpg';
     if (image.startsWith('http://') || image.startsWith('https://')) {
       return image;
     }
