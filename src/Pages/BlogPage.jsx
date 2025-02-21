@@ -40,7 +40,7 @@ const BlogPage = () => {
 
   // Format image URL
   const formatImageUrl = (image) => {
-    if (!image) return '/placeholder.jpg';
+    //if (!image) return '/placeholder.jpg'; Removing this line because it is creating a loop for fetching placeholder.jpg at front end , it will consume user device resources
     if (image.startsWith('http://') || image.startsWith('https://')) {
       return image;
     }
