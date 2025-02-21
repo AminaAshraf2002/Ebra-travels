@@ -4,7 +4,7 @@ export const enquiryService = {
   // Create a new enquiry
   createEnquiry: async (enquiryData) => {
     try {
-      const response = await api.post('/enquiries', {
+      const response = await api.post('/enquiries/enquiries', {
         name: enquiryData.name,
         email: enquiryData.email,
         phone: enquiryData.phone,
@@ -20,7 +20,7 @@ export const enquiryService = {
   // Get all enquiries (for admin)
   getAllEnquiries: async (params) => {
     try {
-      const response = await api.get('/enquiries', { params });
+      const response = await api.get('/enquiries/admin/enquiries', { params });
       return response.data;
     } catch (error) {
       console.error('Fetch enquiries error:', error);
@@ -31,7 +31,7 @@ export const enquiryService = {
   // Update enquiry status
   updateEnquiryStatus: async (id, status) => {
     try {
-      const response = await api.put(`/enquiries/${id}/status`, { status });
+      const response = await api.put(`/enquiries/admin/enquiries/${id}/status`, { status });
       return response.data;
     } catch (error) {
       console.error('Update enquiry status error:', error);
@@ -42,7 +42,7 @@ export const enquiryService = {
   // Delete an enquiry
   deleteEnquiry: async (id) => {
     try {
-      const response = await api.delete(`/enquiries/${id}`);
+      const response = await api.delete(`/enquiries/admin/enquiries/${id}`);
       return response.data;
     } catch (error) {
       console.error('Delete enquiry error:', error);
@@ -53,7 +53,7 @@ export const enquiryService = {
   // Get enquiry statistics
   getEnquiryStats: async () => {
     try {
-      const response = await api.get('/enquiries/stats');
+      const response = await api.get('/enquiries/admin/enquiries/stats');
       return response.data;
     } catch (error) {
       console.error('Fetch enquiry stats error:', error);
