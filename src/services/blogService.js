@@ -23,7 +23,7 @@ export const blogService = {
     // Get all blogs (admin view)
     getAllBlogsAdmin: async (params = {}) => {
         try {
-            const response = await api.get('/blog/admin', { 
+            const response = await api.get('/blogs/blog/admin', { 
                 params: {
                     page: 1,
                     limit: 10,
@@ -46,7 +46,7 @@ export const blogService = {
         }
 
         try {
-            const response = await api.get(`/${id}`);
+            const response = await api.get(`/blogs/${id}`);
             return response.data;
         } catch (error) {
             console.error('Blog Details Fetch Error:', error);
@@ -63,7 +63,7 @@ export const blogService = {
         }
 
         try {
-            const response = await api.get(`/blog/admin/${id}`);
+            const response = await api.get(`/blogs/blog/admin/${id}`);
             return response.data;
         } catch (error) {
             console.error('Admin Blog Details Fetch Error:', error);
@@ -87,7 +87,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.post('/blog/admin', formData, {
+            const response = await api.post('/blogs/blog/admin', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -122,7 +122,7 @@ export const blogService = {
                 });
             }
 
-            const response = await api.put(`/blog/admin/${id}`, formData, {
+            const response = await api.put(`/blogs/blog/admin/${id}`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -145,7 +145,7 @@ export const blogService = {
         }
 
         try {
-            const response = await api.delete(`/blog/admin/${id}`);
+            const response = await api.delete(`/blogs/blog/admin/${id}`);
             toast.success('Blog deleted successfully');
             return response.data;
         } catch (error) {
