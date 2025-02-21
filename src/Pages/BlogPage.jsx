@@ -85,10 +85,10 @@ const BlogPage = () => {
                     <img
                       src={formatImageUrl(blog.image)}
                       alt={blog.title}
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/placeholder.jpg';
-                      }}
+                      //onError={(e) => {
+                        //e.target.onerror = null;
+                        //e.target.src = '/placeholder.jpg';
+                      //}}
                     />
                   </div>
                   <div className="blog-page-content">
