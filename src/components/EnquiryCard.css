@@ -8,26 +8,31 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     font-family: Arial, sans-serif;
-   
 }
 
+/* Icon Row Styles */
 .icon-row {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: -30px;
+    gap: 10px;
+    flex-wrap: nowrap;
 }
 
 .icon {
-    font-size: 1em;
-    padding: 12px;
+    flex: 1;
+    min-width: 0;
+    font-size: clamp(0.7em, 2vw, 1em);
+    padding: 12px 8px;
     background-color: #042f5c;
     color: white;
     border-radius: 5px;
     text-align: center;
-    flex: 1;
-    margin: 0 5px;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out, transform 0.3s ease;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .icon:hover {
@@ -35,6 +40,7 @@
     transform: translateY(-3px);
 }
 
+/* Heading Styles */
 .enquiry-card h2 {
     font-size: 1.5em;
     font-family: fantasy;
@@ -43,148 +49,36 @@
     color: #333;
 }
 
+/* Form Styles */
 .enquiry-form {
     display: flex;
     flex-direction: column;
     font-size: small;
 }
 
-/* Responsive Design */
-
-/* For tablets */
-@media (max-width: 768px) {
-    .icon-row {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .icon {
-        flex: 0 0 45%; /* Two icons per row */
-        margin: 10px 5px;
-        font-size: 0.9em;
-        padding: 10px;
-    }
-
-    .enquiry-card h2 {
-        font-size: 1.3em;
-        text-align: center;
-        font-family: fantasy;
-    }
-}
-
-/* For mobile devices */
-@media (max-width: 480px) {
-    .icon-row {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-
-    .icon {
-        flex: 1; /* Single icon per row */
-        font-size: 0.8em;
-        padding: 8px;
-       
-    }
-
-    .enquiry-card {
-        padding: 15px;
-    }
-
-    .enquiry-card h2 {
-        font-size: 1.2em;
-        text-align: center;
-        font-family: fantasy;
-    }
-}
 .form-row {
     display: flex;
     gap: 10px;
     margin-bottom: 15px;
 }
 
-.form-row input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1.5rem; /* Adjusted for responsiveness */
-    color: #333;
-    box-sizing: border-box;
-}
-
-.form-row input:focus {
-    border-color: #007bff;
-    outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.form-group {
-    margin-bottom: 15px;
-    font-size: 0.9em;
-}
-
-.form-group label {
-    display: flex;
-    align-items: center;
-    color: #333;
-}
-
-.form-group input[type="checkbox"] {
-    margin-right: 10px;
-    transform: scale(1.2); /* Larger checkbox */
-}
-
-.form-group label {
-    color: #555;
-    cursor: pointer;
-    user-select: none;
-}
-
-.form-group input[type="checkbox"]:checked + label {
-    color: #28a745; /* Green color for checked state */
-}
-
-.submit-button {
-    margin-top: 20px; /* Adjusted margin for responsiveness */
-    padding: 10px;
-    width: 100%; /* Full width for smaller screens */
-    max-width: 130px; /* Maximum width */
-    background-color: #df824c;
-    color: #fff;
-    font-size: 1em;
-    font-weight: bold;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    display: block;
-    margin-left: auto; /* Align button to the right */
-    margin-top: -20px;
-    
-}
-
-.submit-button:hover {
-    background-color: #b45c29;
-}
 .input-wrapper {
     position: relative;
     flex: 1;
     display: flex;
     align-items: center;
-   
 }
 
 .input-wrapper i {
     position: absolute;
     left: 10px;
     color: #007bff;
-    font-size: 1em; /* Default font size */
+    font-size: 1em;
 }
 
 .input-wrapper input {
     width: 100%;
-    padding: 10px 10px 10px 35px; /* Extra padding on the left for the icon */
+    padding: 10px 10px 10px 35px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 1em;
@@ -198,73 +92,162 @@
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Responsive Design */
+/* Checkbox Styles */
+.form-group {
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
 
-/* For tablets (max-width: 768px) */
-@media (max-width: 768px) {
-    .input-wrapper {
-        flex-direction: column; /* Stack icon and input vertically if needed */
-    }
+.form-group label {
+    display: flex;
+    align-items: center;
+    color: #333;
+}
 
-    .input-wrapper i {
-        font-size: 0.9em; /* Slightly smaller icon */
-    }
+.form-group input[type="checkbox"] {
+    margin-left: 240px;
+    transform: scale(1.2);
+}
 
-    .input-wrapper input {
-        font-size: 0.9em; /* Reduce font size for better alignment */
-        padding: 8px 8px 8px 30px; /* Adjust padding */
-        margin-top: 15px;
+.form-group label {
+    color: #555;
+    cursor: pointer;
+    user-select: none;
+}
+
+.form-group input[type="checkbox"]:checked + label {
+    color: #28a745;
+}
+
+/* Submit Button Styles */
+.submit-button {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    max-width: 130px;
+    background-color: #df824c;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-top: -20px;
+}
+
+.submit-button:hover {
+    background-color: #b45c29;
+}
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .icon {
+        padding: 12px;
+        font-size: 1em;
     }
 }
 
-/* For mobile devices (max-width: 480px) */
-@media (max-width: 480px) {
-    .input-wrapper i {
-        font-size: 0.8em; /* Smaller icon size for compact design */
-    }
-
-    .input-wrapper input {
-        font-size: 0.8em; /* Smaller font size */
-        padding: 8px 8px 8px 28px; /* Adjust padding for smaller screens */
-        margin-top: 15px;
+/* Medium screens */
+@media (max-width: 1199px) {
+    .icon {
+        padding: 10px 6px;
+        font-size: 0.9em;
     }
 }
-/* Responsive Design */
 
-/* For tablets (max-width: 768px) */
+/* Tablet */
 @media (max-width: 768px) {
+    .icon-row {
+        margin-top: -25px;
+    }
+    
+    .icon {
+        padding: 8px 4px;
+        font-size: 0.8em;
+    }
+
     .form-row {
-        flex-direction: column; /* Stack inputs vertically */
+        flex-direction: column;
     }
 
-    .form-row input {
-        font-size: 1.2rem;
-        padding: 8px;
+    .input-wrapper input {
+        font-size: 0.9em;
+        padding: 8px 8px 8px 30px;
+        margin-top: 15px;
+    }
+
+    .enquiry-card h2 {
+        font-size: 1.3em;
+        text-align: center;
     }
 
     .submit-button {
-        width: 80%; /* Adjust button width */
+        width: 80%;
         max-width: 100px;
-    }
-}
-
-/* For mobile devices (max-width: 480px) */
-@media (max-width: 480px) {
-    .form-row input {
-        font-size: 1rem;
-        padding: 8px;
-    }
-
-    .submit-button {
-        width: 50%; /* Full width for mobile */
-        padding: 10px;
-    }
-
-    .form-group {
-        font-size: 0.8em; /* Slightly smaller font */
     }
 
     .form-group input[type="checkbox"] {
-        transform: scale(1); /* Standard checkbox size */
+        margin-left: 120px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .enquiry-card {
+        padding: 15px;
+    }
+
+    .icon-row {
+        margin-top: -20px;
+        gap: 5px;
+    }
+    
+    .icon {
+        padding: 6px 3px;
+        font-size: 0.7em;
+       
+    }
+
+    .input-wrapper input {
+        font-size: 0.8em;
+        padding: 8px 8px 8px 28px;
+    }
+
+    .enquiry-card h2 {
+        font-size: 1.2em;
+    }
+
+    .submit-button {
+        width: 50%;
+        padding: 8px;
+    }
+
+    .form-group {
+        font-size: 0.8em;
+    }
+
+    .form-group input[type="checkbox"] {
+        margin-left: 60px;
+        transform: scale(1);
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+    .icon {
+        padding: 5px 2px;
+        font-size: 0.6em;
+      
+    }
+
+    .input-wrapper input {
+        font-size: 0.75em;
+    }
+
+    .form-group input[type="checkbox"] {
+        margin-left: 30px;
     }
 }
