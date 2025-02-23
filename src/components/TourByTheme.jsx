@@ -11,7 +11,7 @@ import familyImage from '../assets/themes/family.jpeg';
 import womenImage from '../assets/themes/girls.jpeg';
 import seniorImage from '../assets/themes/senior.jpeg';
 import groupImage from '../assets/themes/group.jpeg';
-import honeymoonImage from '../assets/themes/honeymoon.jpeg'
+import honeymoonImage from '../assets/themes/honeymoon.jpeg';
 
 const themes = [
     { title: "Family Tour Packages", image: familyImage },
@@ -30,8 +30,10 @@ const TourByTheme = () => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
         responsive: [
             {
                 breakpoint: 1024,
@@ -56,9 +58,14 @@ const TourByTheme = () => {
             <p className="theme-description">Trips for every interest</p>
             <Slider {...settings}>
                 {themes.map((theme, index) => (
-                    <div className="theme-card" key={index} data-aos="fade-up">
-                        <img src={theme.image} alt={theme.title} />
-                        <h3>{theme.title}</h3>
+                    <div key={index}>
+                        <div className="theme-card" data-aos="fade-up">
+                            <img src={theme.image} alt={theme.title} />
+                            <div className="overlay"></div>
+                            <div className="card-content">
+                                <h3>{theme.title}</h3>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </Slider>
