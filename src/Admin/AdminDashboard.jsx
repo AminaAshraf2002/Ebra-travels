@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaBlog, FaEnvelope, FaSignOutAlt, FaTachometerAlt, FaBars, FaTimes, FaPlus } from 'react-icons/fa';
+import { FaBlog, FaEnvelope, FaSignOutAlt, FaTachometerAlt, FaBars, FaTimes, FaPlus, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -36,11 +36,11 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       {/* Sidebar */}
-      <div className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
+      <div className={`dashboard-sidebar ${isSidebarOpen ? 'open' : 'collapsed'}`}>
         <div className="sidebar-header">
           <h2>Ebra Holidays</h2>
           <button className="close-sidebar" onClick={toggleSidebar}>
-            <FaTimes />
+            {isSidebarOpen ? <FaChevronLeft /> : <FaChevronRight />}
           </button>
         </div>
 
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
           <a href="/admin/dashboard" className="nav-link active">
             <FaTachometerAlt /> Dashboard
           </a>
-          <a href="/admin/blog" className="nav-link">
+          <a href="/admin/blogs" className="nav-link">
             <FaBlog /> Blogs
           </a>
           <a href="/admin/enquiries" className="nav-link">
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
         {/* Top Bar */}
         <div className="dashboard-topbar">
           <button className="menu-toggle" onClick={toggleSidebar}>
-            <FaBars />
+            {isSidebarOpen ? <FaTimes /> : <FaBars />}
           </button>
           <div className="user-info">
             <span>Welcome, Boni Chacko</span>
@@ -89,7 +89,7 @@ const AdminDashboard = () => {
 
           {/* Quick Actions */}
           <div className="quick-actions">
-            <button onClick={() => navigate('/admin/add-blog')} className="action-btn">
+            <button onClick={() => navigate('/admin/blogs')} className="action-btn">
               <FaPlus /> Add New Blog
             </button>
           </div>
@@ -135,3 +135,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
