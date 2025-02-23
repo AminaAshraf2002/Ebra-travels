@@ -51,9 +51,9 @@ body {
 }
 
 .nav ul li a {
-    color: white;
+    color: navy;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: bolder;
     padding: 10px 20px;
     font-size: 1rem;
     transition: color 0.3s ease, transform 0.3s ease;
