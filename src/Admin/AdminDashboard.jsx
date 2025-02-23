@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaBlog, FaEnvelope, FaSignOutAlt, FaTachometerAlt, FaBars, FaTimes, FaPlus, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaBlog, FaEnvelope, FaSignOutAlt, FaTachometerAlt, FaBars, FaTimes, FaPlus } from 'react-icons/fa';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -36,11 +36,11 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       {/* Sidebar */}
-      <div className={`dashboard-sidebar ${isSidebarOpen ? 'open' : 'collapsed'}`}>
+      <div className={dashboard-sidebar ${isSidebarOpen ? 'open' : ''}}>
         <div className="sidebar-header">
           <h2>Ebra Holidays</h2>
           <button className="close-sidebar" onClick={toggleSidebar}>
-            {isSidebarOpen ? <FaChevronLeft /> : <FaChevronRight />}
+            <FaTimes />
           </button>
         </div>
 
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
           <a href="/admin/dashboard" className="nav-link active">
             <FaTachometerAlt /> Dashboard
           </a>
-          <a href="/admin/blogs" className="nav-link">
+          <a href="/admin/blog" className="nav-link">
             <FaBlog /> Blogs
           </a>
           <a href="/admin/enquiries" className="nav-link">
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
         {/* Top Bar */}
         <div className="dashboard-topbar">
           <button className="menu-toggle" onClick={toggleSidebar}>
-            {isSidebarOpen ? <FaTimes /> : <FaBars />}
+            <FaBars />
           </button>
           <div className="user-info">
             <span>Welcome, Boni Chacko</span>
@@ -77,7 +77,7 @@ const AdminDashboard = () => {
           {/* Stats */}
           <div className="stats-grid">
             {stats.map((stat, index) => (
-              <div key={index} className={`stat-card ${stat.color}`}>
+              <div key={index} className={stat-card ${stat.color}}>
                 <div className="stat-icon">{stat.icon}</div>
                 <div className="stat-info">
                   <h3>{stat.count}</h3>
@@ -89,7 +89,7 @@ const AdminDashboard = () => {
 
           {/* Quick Actions */}
           <div className="quick-actions">
-            <button onClick={() => navigate('/admin/blogs')} className="action-btn">
+            <button onClick={() => navigate('/admin/add-blog')} className="action-btn">
               <FaPlus /> Add New Blog
             </button>
           </div>
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
                     <div className="card-content">
                       <h4>{blog.title}</h4>
                       <p>{blog.date}</p>
-                      <span className={`status ${blog.status.toLowerCase()}`}>
+                      <span className={status ${blog.status.toLowerCase()}}>
                         {blog.status}
                       </span>
                     </div>
