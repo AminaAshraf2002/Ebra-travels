@@ -1,9 +1,9 @@
-/* Carousel image styling */
+/* Carousel Base Styles */
 .carousel img {
     width: 100%;
-    height: auto;
-    max-height: 550px;
-    object-fit: fill;
+    height: 100%;
+    max-height: 600px;
+    object-fit: cover;
 }
 
 .carousel-wrapper {
@@ -11,7 +11,8 @@
     max-width: 100vw;
     overflow: hidden;
     margin: 0 auto;
-    height: 500px;
+    height: 600px;
+    position: relative;
 }
 
 .carousel-content {
@@ -22,16 +23,18 @@
     color: white;
     text-align: left;
     max-width: 60%;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.5); /* Optional: To add a slight background overlay */
+    padding: 25px;
+    background: rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-   
+    z-index: 2;
 }
 
 .carousel-content h1 {
-    font-size: 2.3rem;
-    font-weight: bold;
-    margin: 0 0 10px;
+    font-size: 2.5rem;
+    font-weight:lighter;
+    margin: 0 0 15px;
+    line-height: 1.2;
+    font-family:fantasy;
 }
 
 .carousel-content p {
@@ -49,84 +52,141 @@
     margin-left: -40%;
 }
 
-/* Carousel control dots styling */
+/* Carousel Dots */
 .carousel .control-dots .dot {
     background-color: #fff;
     opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
 .carousel .control-dots .dot.selected {
-    background-color: #b8972b; /* Highlight color for the selected dot */
+    background-color: #b8972b;
     opacity: 1;
 }
 
-/* Responsive Styles */
+/* Large Screens (1441px and up) */
+@media screen and (min-width: 1441px) {
+    .carousel-wrapper {
+        height: 600px;
+    }
+    
+    .carousel img {
+        max-height: 600px;
+    }
+}
+
+/* Desktop (1025px - 1440px) */
+@media screen and (max-width: 1440px) {
+    .carousel-wrapper {
+        height: 600px;
+    }
+    
+    .carousel-content {
+        max-width: 65%;
+    }
+    
+    .carousel-content h1 {
+        font-size: 2rem;
+    }
+}
+
+/* Small Desktop/Tablet Landscape (769px - 1024px) */
 @media screen and (max-width: 1024px) {
+    .carousel-wrapper {
+        height: 500px;
+    }
+    
     .carousel-content {
         max-width: 80%;
-        padding: 15px;
-        
+        padding: 20px;
     }
-
+    
     .carousel-content h1 {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
+        margin-bottom: 12px;
     }
-
+    
     .carousel-content p {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
-
+    
     .carousel-content.right {
-        margin-left: 0;
-        text-align: center;
+        margin-left: -20%;
     }
+}
 
+/* Tablet Portrait (481px - 768px) */
+@media screen and (max-width: 768px) {
     .carousel-wrapper {
         height: 400px;
     }
-}
-
-@media screen and (max-width: 768px) {
+    
     .carousel-content {
-        max-width: 90%;
-        padding: 10px;
-        margin-top: -20px;
+        max-width: 85%;
+        padding: 15px;
     }
-
+    
     .carousel-content h1 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
     }
-
+    
     .carousel-content p {
-        font-size: 0.9rem;
-    }
-
-    .carousel-wrapper {
-        height: 350px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .carousel-content {
-        max-width: 100%;
-        padding: 8px;
-        margin-top: -40px;
-    }
-
-    .carousel-content h1 {
         font-size: 1rem;
+        line-height: 1.4;
     }
-
-    .carousel-content p {
-        font-size: 0.8rem;
-    }
-
-    .carousel-wrapper {
-        height: 300px;
-    }
-
+    
     .carousel-content.right {
         margin-left: 0;
         text-align: center;
+    }
+    
+    .carousel-content.left {
+        text-align: center;
+    }
+}
+
+/* Mobile (320px - 480px) */
+@media screen and (max-width: 480px) {
+    .carousel-wrapper {
+        height: 300px;
+    }
+    
+    .carousel-content {
+        max-width: 92%;
+        padding: 12px;
+        top: 50%;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+    
+    .carousel-content p {
+        font-size: 0.9rem;
+        line-height: 1.3;
+    }
+}
+
+/* Extra Small Mobile (below 320px) */
+@media screen and (max-width: 320px) {
+    .carousel-wrapper {
+        height: 250px;
+    }
+    
+    .carousel-content {
+        max-width: 95%;
+        padding: 10px;
+    }
+    
+    .carousel-content h1 {
+        font-size: 1.1rem;
+        margin-bottom: 6px;
+    }
+    
+    .carousel-content p {
+        font-size: 0.8rem;
+        line-height: 1.2;
     }
 }
