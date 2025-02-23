@@ -82,7 +82,9 @@
     margin-top: 10px;
     color: white;
 }
-
+.large-blog-card .blog-details h3{
+    color: #f9f9f9;
+}
 /* Large Blog Card Adjustments */
 .large-blog-card .blog-details {
     position: absolute;
@@ -114,6 +116,7 @@
 
     .large-blog-card h3 {
         font-size: 1.1rem; /* Reduce font size for better readability */
+        color: #f9f9f9;
     }
 
     .blog-details p {
