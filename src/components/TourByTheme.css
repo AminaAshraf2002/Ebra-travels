@@ -1,208 +1,190 @@
-/* Default Styles for .tour-by-theme-section */
+/* Tour By Theme Section Styles */
 .tour-by-theme-section {
   text-align: center;
-  padding: 10em;
+  padding: 6em 2em;
   max-width: 1200px;
-  margin-left: 60px;
+  margin: 0 auto;
   margin-top: -100px;
+  position: relative;
 }
 
 .tour-by-theme-section h2 {
-  text-align: left; /* Adjusted to left alignment */
-  font-size: 2rem; /* Matching the font size from the model */
-  font-weight: 600; /* Added for emphasis, like the .main-heading style */
-  margin: 0.5rem 0;
-
-  margin-left: 25px; /* Matching the model's left margin */
+  text-align: left;
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 1rem 0;
+  margin-left: 25px;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .theme-description {
-  font-size: 1rem; /* Updated to match the size from the model */
-  color: #042f5c; /* Updated color to match the .subheading style */
-  font-weight: 400; /* Adjusted font weight to match the model */
-  text-align: left; /* Adjusted to left alignment */
-  margin-left: 25px; /* Aligning with the same left margin as the heading */
+  font-size: 1rem;
+  color: #042f5c;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 25px;
 
-  
 }
 
+/* Card Styles */
 .theme-card {
   position: relative;
-  height: 280px; /* Adjust the height as needed */
-  border-radius: 10px;
-  transition: transform 0.3s;
-  color: white;
-  width: 30%;
-  margin-left: 25px;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.theme-card:hover {
+  transform: translateY(-5px);
 }
 
 .theme-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.theme-card:hover img {
+  transform: scale(1.05);
+}
+
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
-  width: 90%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 1;
-}
-
-.theme-card::before {
-  content: '';
-  position: absolute;
-  top: 30%;
-  left: 0;
-  width: 90%;
-  height: 45%;
-  margin-bottom: -30px;
-  background-color: rgba(0, 0, 0, 0.534); /* Dark transparent overlay */
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.2) 0%,
+      rgba(0, 0, 0, 0.6) 50%,
+      rgba(0, 0, 0, 0.8) 100%
+  );
   z-index: 2;
 }
 
-.theme-card h3 {
+.card-content {
   position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
   z-index: 3;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: white;
-  font-size: 1.2em;
   text-align: center;
-  padding: 0.5em 1em;
 }
 
-.slick-prev:before, .slick-next:before {
-  color: black; /* Adjust arrow colors */
+.theme-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Slider Navigation Styles */
+.slick-prev,
+.slick-next {
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+}
+
+.slick-prev {
+  left: -50px;
+}
+
+.slick-next {
+  right: -50px;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+  font-size: 24px;
+}
+
+.slick-dots {
+  bottom: -40px;
+}
+
+.slick-dots li button:before {
+  font-size: 12px;
+}
+
+/* AOS Animation Fix */
 .aos-init {
-  opacity: 1 !important; /* Ensure no visibility issues from AOS */
+  opacity: 1 !important;
 }
 
-/* Responsive Adjustments for Mobile */
+/* Responsive Styles */
 @media (max-width: 600px) {
-  /* Mobile screen styles */
   .tour-by-theme-section {
-    padding: 5em 1.5em; /* Reduced padding for mobile */
-    margin-left: 0; /* Remove left margin */
-    margin-top: -50px; /* Adjust top margin for mobile */
+      padding: 4em 1em;
+      margin-top: -50px;
   }
 
   .tour-by-theme-section h2 {
-    font-size: 1.5rem; /* Reduced font size for h2 on mobile */
-    margin-bottom: -60px;
-    text-align: center; /* Center the heading */
-    margin-left: -20px;
+      font-size: 1.5rem;
+      text-align: center;
+      margin-left: 0;
+      margin-bottom: 10px;
   }
 
   .theme-description {
-    font-size: 0.9rem; /* Smaller font size for mobile */
-    margin-bottom: 40px; /* Reduced margin for mobile */
-    
+      font-size: 0.9rem;
+      text-align: center;
+      margin-left: 0;
+      margin-bottom: 30px;
   }
 
   .theme-card {
-    width: 90%; /* Full width for cards on mobile */
-    height: 200px; /* Reduced height for mobile */
-    margin-bottom: 20px; /* Add space between cards */
+      height: 450px;
   }
 
   .theme-card h3 {
-    font-size: 1rem; /* Adjusted font size for card text */
-    padding: 0.3em 0.8em; /* Reduced padding */
+      font-size: 1.2rem;
+  }
+
+  .slick-prev {
+      left: -20px;
+  }
+
+  .slick-next {
+      right: -20px;
   }
 }
 
-/* Responsive Adjustments for Tablets */
 @media (min-width: 601px) and (max-width: 1024px) {
-  /* Tablet screen styles */
   .tour-by-theme-section {
-    padding: 8em 2em; /* Reduced padding for tablets */
-    margin-left: 20px; /* Slightly adjusted left margin */
-    margin-top: -80px; /* Adjusted margin for tablets */
-  }
-
-  .tour-by-theme-section h2 {
-    font-size: 1.8rem; /* Adjusted heading font size for tablet */
-    margin-bottom: -20px;
-    text-align: left; /* Left aligned heading for tablets */
-  }
-
-  .theme-description {
-    font-size: 1rem; /* Normal font size for tablet */
-    margin-bottom: 60px; /* Adjusted margin */
-    margin-top: 30px;
+      padding: 5em 2em;
+      margin-top: -80px;
   }
 
   .theme-card {
-    width: 48%; /* Two cards per row on tablet */
-    height: 250px; /* Adjusted height */
-    margin-bottom: 30px; /* Add space between cards */
-    margin-top: -50px;
+      height: 475px;
   }
 
-  .theme-card h3 {
-    font-size: 1.1rem; /* Slightly larger text */
+  .slick-prev {
+      left: -30px;
+  }
+
+  .slick-next {
+      right: -30px;
   }
 }
 
-/* Responsive Adjustments for Laptops */
-@media (min-width: 1025px) and (max-width: 1440px) {
-  /* Laptop screen styles */
-  .tour-by-theme-section {
-    padding: 10em 3em; /* Larger padding for laptop screens */
-    margin-left: 40px; /* Adjusted left margin for laptop */
-    margin-top: -100px; /* Keep top margin as is */
+@media (min-width: 1025px) {
+  .slick-prev {
+      left: -50px;
   }
 
-  .tour-by-theme-section h2 {
-    font-size: 2rem; /* Normal heading size for laptop */
-    margin-bottom: -65px;
-    text-align: left; /* Left aligned heading */
-  }
-
-  .theme-description {
-    font-size: 1rem; /* Normal font size for laptop */
-    margin-bottom: 70px; /* Consistent spacing */
-  }
-
-  .theme-card {
-    width: 23%; /* Four cards per row on laptops */
-    height: 300px; /* Original card height */
-    margin-bottom: 30px; /* Add space between cards */
-  }
-
-  .theme-card h3 {
-    font-size: 1.2rem; /* Normal text size */
-  }
-}
-
-/* Responsive Adjustments for Desktop (Large Screens) */
-@media (min-width: 1441px) {
-  /* Desktop screen styles */
-  .tour-by-theme-section {
-    padding: 10em 4em; /* Max padding for large screens */
-    margin-left: 60px; /* Maintain left margin for large screens */
-    margin-top: -100px; /* Keep the same margin */
-  }
-
-  .tour-by-theme-section h2 {
-    font-size: 2.2rem; /* Larger heading size for desktops */
-    margin-bottom: -70px;
-    text-align: left; /* Left aligned heading */
-  }
-
-  .theme-description {
-    font-size: 1.1rem; /* Slightly larger text for desktop */
-    margin-bottom: 80px; /* More spacing between description and cards */
-  }
-
-  .theme-card {
-    width: 23%; /* Keep four cards per row on large screens */
-    height: 300px; /* Standard card height */
-    margin-bottom: 30px; /* Space between cards */
-  }
-
-  .theme-card h3 {
-    font-size: 1.3rem; /* Larger text on large screens */
+  .slick-next {
+      right: -50px;
   }
 }
