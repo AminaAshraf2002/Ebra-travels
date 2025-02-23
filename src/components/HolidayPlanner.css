@@ -3,9 +3,10 @@
     padding: 4rem; /* Adjusted for responsiveness */
     font-family: 'Poppins', sans-serif;
     color: #333;
-    background-image: url('https://img.freepik.com/free-photo/woman-tourist-full-length-happy-young-woman-standing-with-suitcase-with-exciting-gesturing-isolated_1258-111606.jpg');
+    background-image: url('https://img.freepik.com/free-photo/full-length-happy-smiling-young-tourist-asian-man-walking-while-holding-luggage-showing-passport_74952-3122.jpg?t=st=1740353564~exp=1740357164~hmac=336d63841ce38f165850961a1cb9deb88aa4f85a6c206b66951bef65076ecf3c&w=1380');
     background-size:cover;
     background-position: center;
+    min-height: 80vh;
 }
 
 /* Title Section */
@@ -36,8 +37,27 @@
     justify-content: center;
     gap: 1.5rem;
     margin-top: 2rem;
+    margin-right: 800px; /* Removed fixed margin for better responsiveness */
+    margin-left: auto; /* Center aligns content */
+    max-width: 1200px; /* Optional: Limits width for better layout */
+    padding: 0 1rem; /* Adds space on small screens */
 }
 
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .tour-list {
+        gap: 1rem; /* Reduce gap for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .tour-list {
+        flex-direction: column; /* Stack items on smaller screens */
+        align-items: center; /* Keep items centered */
+        gap: 1rem;
+        margin-right: 500px; /* Remove right margin */
+    }
+}
 
 /* Image Container */
 .image-container {
@@ -51,6 +71,7 @@
     margin: 0 auto 0.5rem auto;
     position: relative;
     overflow: hidden;
+    
 }
 
 .tour-image {
@@ -60,6 +81,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 45%;
+    
 }
 
 /* Icon Container */
@@ -77,6 +99,7 @@
     align-items: center;
     font-size: 1.2rem;
     color: #042f5c;
+    
 }
 
 /* Tour Title & Details */
