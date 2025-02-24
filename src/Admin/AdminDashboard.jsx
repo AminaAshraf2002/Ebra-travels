@@ -36,7 +36,7 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       {/* Sidebar */}
-      <div className={dashboard-sidebar ${isSidebarOpen ? 'open' : ''}}>
+      <div className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <h2>Ebra Holidays</h2>
           <button className="close-sidebar" onClick={toggleSidebar}>
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
           <a href="/admin/dashboard" className="nav-link active">
             <FaTachometerAlt /> Dashboard
           </a>
-          <a href="/admin/blog" className="nav-link">
+          <a href="/admin/blogs" className="nav-link">
             <FaBlog /> Blogs
           </a>
           <a href="/admin/enquiries" className="nav-link">
@@ -77,7 +77,7 @@ const AdminDashboard = () => {
           {/* Stats */}
           <div className="stats-grid">
             {stats.map((stat, index) => (
-              <div key={index} className={stat-card ${stat.color}}>
+              <div key={index} className={`stat-card ${stat.color}`}>
                 <div className="stat-icon">{stat.icon}</div>
                 <div className="stat-info">
                   <h3>{stat.count}</h3>
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
                     <div className="card-content">
                       <h4>{blog.title}</h4>
                       <p>{blog.date}</p>
-                      <span className={status ${blog.status.toLowerCase()}}>
+                      <span className={`status ${blog.status.toLowerCase()}`}>
                         {blog.status}
                       </span>
                     </div>
