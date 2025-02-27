@@ -3,10 +3,9 @@
     padding: 4rem; /* Adjusted for responsiveness */
     font-family: 'Poppins', sans-serif;
     color: #333;
-    background-image: url('https://media.istockphoto.com/id/1388524452/photo/image-of-young-asian-family-travel-concept-background.jpg?s=612x612&w=0&k=20&c=Kd75yGPQF9dUWgIx3lCTcLfjNSB8Jf8KAjYZA1bIOfg=');
-    background-size:cover;
+    background-image: url('https://img.freepik.com/free-photo/woman-tourist-full-length-happy-young-woman-standing-with-suitcase-with-exciting-gesturing-isolated_1258-111606.jpg');
+    background-size: cover;
     background-position: center;
-    min-height: 80vh;
 }
 
 /* Title Section */
@@ -27,184 +26,18 @@
     font-size: 1.5rem;
     font-weight: 600;
     margin: 0.5rem 0;
-    margin-left: 80px
-}
-
-/* Main container styles */
-.holiday-planner {
-    position: relative;
-    min-height: 80vh; /* Default height */
-    width: 100%;
-    text-align: center;
-    padding: 4rem;
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    overflow: hidden;
-}
-
-/* Background Image */
-.holiday-planner::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('your-background-image.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
+    margin-left: 80px;
 }
 
 /* Tour List Section */
 .tour-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 1.5rem;
     margin-top: 2rem;
-    margin-right: 580px;
-    padding: 0 20px;
 }
 
-/* Large Desktop (1440px and above) */
-@media screen and (min-width: 1440px) {
-    .holiday-planner {
-        min-height: 80vh;
-    }
-    .tour-list {
-        margin-right: 580px;
-        gap: 2rem;
-    }
-}
-
-/* Desktop (1024px to 1439px) */
-@media screen and (min-width: 1024px) and (max-width: 1439px) {
-    .holiday-planner {
-        min-height: 75vh;
-        padding: 3.5rem;
-    }
-    .tour-list {
-        margin-right: 400px;
-        gap: 1.5rem;
-    }
-}
-
-/* Tablet Landscape (768px to 1023px) */
-@media screen and (min-width: 768px) and (max-width: 1023px) {
-    .holiday-planner {
-        min-height: 70vh;
-        padding: 3rem;
-    }
-    .tour-list {
-        margin-right: 250px;
-        gap: 1.2rem;
-        justify-content: center;
-    }
-}
-
-/* Tablet Portrait (481px to 767px) */
-@media screen and (min-width: 481px) and (max-width: 767px) {
-    .holiday-planner {
-        min-height: 60vh;
-        padding: 2.5rem;
-    }
-    .tour-list {
-        margin-right: 0;
-        gap: 1rem;
-        justify-content: center;
-        padding: 0 15px;
-    }
-}
-
-/* Mobile (480px and below) */
-@media screen and (max-width: 480px) {
-    .holiday-planner {
-        min-height: 50vh; /* Decreased height for mobile */
-        padding: 2rem 1rem;
-    }
-    .tour-list {
-        margin-right: 0;
-        gap: 1rem;
-        justify-content: center;
-        padding: 0 10px;
-    }
-}
-
-/* Tour Card Responsive Styles */
-.tour-card {
-    flex: 0 1 calc(33.333% - 2rem); /* For large screens */
-    max-width: 280px;
-}
-
-@media screen and (max-width: 1023px) {
-    .tour-card {
-        flex: 0 1 calc(50% - 1.2rem); /* 2 cards per row */
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .tour-card {
-        flex: 0 1 calc(50% - 1rem);
-        max-width: 200px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .tour-card {
-        flex: 0 1 calc(50% - 0.5rem);
-        max-width: 160px;
-    }
-}
-
-/* Image Container Responsive Styles */
-.image-container {
-    width: 100px;
-    height: 120px;
-}
-
-@media screen and (max-width: 767px) {
-    .image-container {
-        width: 90px;
-        height: 110px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .image-container {
-        width: 80px;
-        height: 100px;
-    }
-}
-
-/* Icon Container Responsive Styles */
-@media screen and (max-width: 480px) {
-    .icon-container {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
-    }
-}
-
-/* Title Responsive Styles */
-@media screen and (max-width: 767px) {
-    .tour-title {
-        font-size: 0.9rem;
-    }
-    .tour-details {
-        font-size: 0.8rem;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    .tour-title {
-        font-size: 0.85rem;
-    }
-    .tour-details {
-        font-size: 0.75rem;
-    }
-}
 /* Image Container */
 .image-container {
     width: 100px;
@@ -217,7 +50,6 @@
     margin: 0 auto 0.5rem auto;
     position: relative;
     overflow: hidden;
-    
 }
 
 .tour-image {
@@ -227,7 +59,6 @@
     height: 100%;
     object-fit: cover;
     border-radius: 45%;
-    
 }
 
 /* Icon Container */
@@ -245,7 +76,6 @@
     align-items: center;
     font-size: 1.2rem;
     color: #042f5c;
-    
 }
 
 /* Tour Title & Details */
@@ -253,7 +83,6 @@
     font-size: 1rem;
     font-weight: 600;
     margin: 0.5rem 0;
-   
 }
 
 .tour-details {
@@ -268,43 +97,43 @@
     .holiday-planner {
         padding: 2rem;
     }
-
+    
     .title-section {
         margin-top: -20px;
         text-align: center;
     }
-
+    
     .main-heading {
         font-size: 1.25rem;
     }
-
+    
     .subheading {
         font-size: 0.9rem;
     }
-
+    
     .tour-list {
         gap: 1rem;
     }
-
+    
     .tour-card {
         max-width: 200px;
     }
-
+    
     .image-container {
         width: 80px;
         height: 100px;
     }
-
+    
     .icon-container {
         width: 30px;
         height: 30px;
         font-size: 1rem;
     }
-
+    
     .tour-title {
         font-size: 0.9rem;
     }
-
+    
     .tour-details {
         font-size: 0.8rem;
     }
@@ -314,30 +143,30 @@
     .holiday-planner {
         padding: 1.5rem;
     }
-
+    
     .main-heading {
         font-size: 1rem;
     }
-
+    
     .tour-card {
         max-width: 150px;
     }
-
+    
     .image-container {
         width: 70px;
         height: 90px;
     }
-
+    
     .icon-container {
         width: 25px;
         height: 25px;
         font-size: 0.9rem;
     }
-
+    
     .tour-title {
         font-size: 0.8rem;
     }
-
+    
     .tour-details {
         font-size: 0.75rem;
     }
