@@ -77,7 +77,7 @@ const AdminDashboard = () => {
           {/* Stats */}
           <div className="stats-grid">
             {stats.map((stat, index) => (
-              <div key={index} className={stat-card ${stat.color}}>
+              <div key={index} className={`stat-card ${stat.color}`}>
                 <div className="stat-icon">{stat.icon}</div>
                 <div className="stat-info">
                   <h3>{stat.count}</h3>
@@ -104,7 +104,7 @@ const AdminDashboard = () => {
                     <div className="card-content">
                       <h4>{blog.title}</h4>
                       <p>{blog.date}</p>
-                      <span className={status ${blog.status.toLowerCase()}}>
+                      <span className={`status ${blog.status.toLowerCase()}`}>
                         {blog.status}
                       </span>
                     </div>
@@ -135,3 +135,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
