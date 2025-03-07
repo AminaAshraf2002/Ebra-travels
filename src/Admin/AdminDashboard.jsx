@@ -16,11 +16,7 @@ const AdminDashboard = () => {
     setSidebarOpen(!isSidebarOpen);
   };
 
-  const stats = [
-    { title: 'Total Blogs', count: 24, icon: <FaBlog />, color: 'blue' },
-    { title: 'New Enquiries', count: 8, icon: <FaEnvelope />, color: 'green' },
-  ];
-
+ 
 
 
   return (
