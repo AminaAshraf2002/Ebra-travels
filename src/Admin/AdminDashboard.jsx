@@ -21,17 +21,7 @@ const AdminDashboard = () => {
     { title: 'New Enquiries', count: 8, icon: <FaEnvelope />, color: 'green' },
   ];
 
-  const recentBlogs = [
-    { title: 'Top 10 Places in Kerala', date: '2 hours ago', status: 'Published' },
-    { title: 'Best Time to Visit Goa', date: '5 hours ago', status: 'Draft' },
-    { title: 'Manali Travel Guide', date: '1 day ago', status: 'Published' },
-  ];
 
-  const recentEnquiries = [
-    { name: 'John Doe', package: 'Kerala Package', date: '30 min ago' },
-    { name: 'Jane Smith', package: 'Goa Beach Holiday', date: '2 hours ago' },
-    { name: 'Mike Johnson', package: 'Kashmir Tour', date: '3 hours ago' },
-  ];
 
   return (
     <div className="admin-dashboard">
