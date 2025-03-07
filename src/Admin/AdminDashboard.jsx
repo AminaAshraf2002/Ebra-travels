@@ -36,7 +36,7 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       {/* Sidebar */}
-      <div className={dashboard-sidebar ${isSidebarOpen ? 'open' : ''}}>
+      <div className={`dashboard-sidebar ${isSidebarOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <h2>Ebra Holidays</h2>
           <button className="close-sidebar" onClick={toggleSidebar}>
