@@ -17,7 +17,7 @@ const AdminDashboard = () => {
   };
 
   const stats = [
-    { title: 'Total Blogs', count: 24, icon: <FaBlog />, color: 'blue' },
+    { title: 'Total Blogs', count: 6, icon: <FaBlog />, color: 'blue' },
     { title: 'New Enquiries', count: 8, icon: <FaEnvelope />, color: 'green' },
   ];
 
@@ -89,45 +89,13 @@ const AdminDashboard = () => {
 
           {/* Quick Actions */}
           <div className="quick-actions">
-            <button onClick={() => navigate('/admin/add-blog')} className="action-btn">
+            <button onClick={() => navigate('/admin/blog')} className="action-btn">
               <FaPlus /> Add New Blog
             </button>
           </div>
 
           {/* Recent Activity Section */}
-          <div className="activity-section">
-            <div className="recent-blogs">
-              <h3>Recent Blogs</h3>
-              <div className="activity-cards">
-                {recentBlogs.map((blog, index) => (
-                  <div key={index} className="activity-card">
-                    <div className="card-content">
-                      <h4>{blog.title}</h4>
-                      <p>{blog.date}</p>
-                      <span className={`status ${blog.status.toLowerCase()}`}>
-                        {blog.status}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="recent-enquiries">
-              <h3>Recent Enquiries</h3>
-              <div className="activity-cards">
-                {recentEnquiries.map((enquiry, index) => (
-                  <div key={index} className="activity-card">
-                    <div className="card-content">
-                      <h4>{enquiry.name}</h4>
-                      <p>{enquiry.package}</p>
-                      <span className="date">{enquiry.date}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -135,4 +103,5 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
 
